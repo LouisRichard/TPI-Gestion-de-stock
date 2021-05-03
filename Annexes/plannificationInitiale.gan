@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2021-05-01" view-index="0" gantt-divider-location="516" resource-divider-location="300" version="2.8.1" locale="fr">
+    <description/>
+    <view zooming-state="default:1" id="gantt-chart">
+        <field id="tpd3" name="Nom" width="378" order="0"/>
+        <field id="tpd4" name="Date de début" width="68" order="1"/>
+        <field id="tpd5" name="Date de fin" width="66" order="2"/>
+        <option id="color.recent"><![CDATA[#ff6666 #ffcc00 #66ccff #9966ff #00cc66 #000000 #00cccc]]></option>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Nom" width="210" order="0"/>
+        <field id="1" name="Rôle par défaut" width="86" order="1"/>
+    </view>
+    <!-- -->
+    <calendars>
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="1" mon="0" tue="0" wed="0" thu="0" fri="0" sat="1"/>
+            <only-show-weekends value="false"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="5" name="Sprint 1" meeting="false" start="2021-05-03" duration="5" complete="0" expand="true">
+            <task id="0" name="Planification initiale" color="#00cc66" meeting="false" start="2021-05-03" duration="1" complete="0" expand="true"/>
+            <task id="1" name="Mise en place de l'environnement" color="#00cccc" meeting="false" start="2021-05-03" duration="1" complete="0" expand="true"/>
+            <task id="2" name="Création des maquettes" color="#00cc66" meeting="false" start="2021-05-03" duration="5" complete="0" expand="true"/>
+            <task id="3" name="Création MCD/MLD" color="#00cc66" meeting="false" start="2021-05-03" duration="5" complete="0" expand="true"/>
+        </task>
+        <task id="6" name="Sprint 2" meeting="false" start="2021-05-10" duration="6" complete="0" expand="true">
+            <task id="12" name="Création de la BD" color="#66ccff" meeting="false" start="2021-05-10" duration="2" complete="0" expand="true"/>
+            <task id="8" name="Création de la page de login" color="#66ccff" meeting="false" start="2021-05-10" duration="6" complete="0" expand="true"/>
+            <task id="15" name="Création de la page d'accueil" color="#66ccff" meeting="false" start="2021-05-11" duration="5" complete="0" expand="true"/>
+        </task>
+        <task id="35" name="Pont de l'Ascencion" color="#000000" meeting="false" start="2021-05-13" duration="2" complete="0" expand="true"/>
+        <task id="22" name="Sprint 3" meeting="false" start="2021-05-18" duration="4" complete="0" expand="true">
+            <task id="25" name="Page d'accueil" color="#ffcc00" meeting="false" start="2021-05-18" duration="4" complete="0" expand="true"/>
+            <task id="29" name="Création de la page d'ajout d'éléments" color="#ffcc00" meeting="false" start="2021-05-18" duration="4" complete="0" expand="true"/>
+        </task>
+        <task id="39" name="Lundi de Pentecôte" color="#000000" meeting="false" start="2021-05-24" duration="1" complete="0" expand="true"/>
+        <task id="40" name="Sprint 4" meeting="false" start="2021-05-25" duration="4" complete="0" expand="true">
+            <task id="41" name="Création de la page admin" color="#ff6666" meeting="false" start="2021-05-25" duration="4" complete="0" expand="true"/>
+            <task id="48" name="Page d'ajout d'élément" color="#ff6666" meeting="false" start="2021-05-27" duration="2" complete="0" expand="true"/>
+        </task>
+        <task id="50" name="Sprint 5" meeting="false" start="2021-05-31" duration="4" complete="0" expand="true">
+            <task id="52" name="Test de toutes les fonctinnalités" color="#9966ff" meeting="false" start="2021-05-31" duration="4" complete="0" expand="true"/>
+            <task id="54" name="Création du manuel d'installation" color="#00cc66" meeting="false" start="2021-06-01" duration="3" complete="0" expand="true"/>
+            <task id="55" name="Création du manuel d'utilisation" color="#00cc66" meeting="false" start="2021-06-01" duration="3" complete="0" expand="true"/>
+        </task>
+        <task id="27" name="Documentation" color="#00cc66" meeting="false" start="2021-05-03" duration="24" complete="0" expand="true"/>
+    </tasks>
+    <resources/>
+    <allocations/>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+    <roles roleset-name="SoftwareDevelopment"/>
+</project>
