@@ -9,9 +9,10 @@ ob_start();
 
 ?>
 
-<?php
+<h1>BIENVENU SUR LA PAGE D'ACCUEIL !!!</h1>
 
-$contenu = ob_get_clean();
+<?php
+$content = ob_get_clean();
 require "template.php";
 
 ?>

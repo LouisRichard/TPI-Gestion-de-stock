@@ -5,13 +5,26 @@
  * Description : This controller file will contains all function related to users
  **/
 
+require_once 'display.php';
+
 /**
  * Function used to login user
  * @param $userMail - contain mail that the user send
  * @param $pwd - contain password that the user send
  */
 function login($userMail, $pwd){
+    if($userMail != '' && $pwd != ''){
+        require_once 'model/usersManager.php';
+        if(userConnection($userMail, $pwd) != false){
+            createSession();
 
+            displayHome();
+        }
+        else{
+            $_SESSION['msg'] = 'loginError';
+            displayLogin();
+        }
+    }
 }
 
 /**

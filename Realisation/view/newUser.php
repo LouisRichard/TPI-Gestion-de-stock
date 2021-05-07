@@ -11,7 +11,7 @@ ob_start();
 
 <?php
 
-$contenu = ob_get_clean();
+$content = ob_get_clean();
 require "template.php";
 
 ?><?php

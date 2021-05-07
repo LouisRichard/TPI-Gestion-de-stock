@@ -9,10 +9,11 @@
 session_start();
 
 //Require all controller's files
-$files = glob(__DIR__ . '/controller/*.php');
-foreach ($files as $file){
-    require($file);
-}
+require_once 'controller/consumables.php';
+require_once 'controller/display.php';
+require_once 'controller/users.php';
+
+
 
 //Redirect the user request depending of his actions
 if(isset($_GET['action'])){

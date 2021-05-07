@@ -9,14 +9,19 @@
  * Function used to display login page
  */
 function displayLogin(){
-
+    require 'view/login.php';
 }
 
 /**
  * Function used to display homepage
  */
 function displayHome(){
-
+    if(isset($_SESSION['username']) && $_SESSION['username'] != ''){
+        require 'view/home.php';
+    }
+    else{
+        require 'view/login.php';
+    }
 }
 
 /**
