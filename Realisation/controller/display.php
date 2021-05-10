@@ -9,7 +9,12 @@
  * Function used to display login page
  */
 function displayLogin(){
-    require 'view/login.php';
+    if(isset($_SESSION['username']) && $_SESSION['username'] != ''){
+        displayHome();
+    }
+    else{
+        require 'view/login.php';
+    }
 }
 
 /**
@@ -35,7 +40,9 @@ function displayAdminPanel(){
  * Function that display the new user page
  */
 function displayNewUser(){
+    //TODO faire le check pour savoir si l'utilisateur est admin ou non
 
+    require 'view/newUser.php';
 }
 
 /**

@@ -15,9 +15,11 @@ require_once 'display.php';
 function login($userMail, $pwd){
     if($userMail != '' && $pwd != ''){
         require_once 'model/usersManager.php';
-        if(userConnection($userMail, $pwd) != false){
-            createSession();
+        $return = userConnection($userMail, $pwd);
+        if($return != false){
+            createSession($return[0]['email'], $return[0]['lastname'], $return[0]['firstname']);
 
+            $_SESSION['msg'] = 'loginSuccess';
             displayHome();
         }
         else{
@@ -28,11 +30,50 @@ function login($userMail, $pwd){
 }
 
 /**
+ * Function's used to create the session for a new connection of a user
+ * @param $email - email of the user
+ * @param $lastname - lastname of the user
+ * @param $firstname - firstname of the user
+ */
+function createSession($email, $lastname, $firstname){
+    $_SESSION['email'] = $email;
+    $_SESSION['username'] = $lastname. " " .$firstname;
+}
+
+/**
+ * Function used to signOut of the web platform
+ */
+function signOut()
+{
+    $_SESSION = array();
+    session_destroy();
+
+    displayLogin();
+}
+
+/**
  * Function used to add new user
  * @param $post - contain all information about the new user
  */
 function newUser($post){
+    $lastname = $post['lastname'];
+    $firstname = $post['firstname'];
+    $email = $post['email'];
+    $pwd = $post['password'];
+    $admin = false;
+    if(isset($post['admin'])){
+        $admin = true;
+    }
 
+    //TODO Check si l'utilisateur exist déjà
+    if(addUser($lastname, $firstname, $email, $pwd, $admin)){
+        $_SESSION['msg'] = 'newUserSuccess';
+    }
+    else{
+        $_SESSION['msg'] = 'newUserFailed';
+    }
+
+    displayNewUser();
 }
 
 /**

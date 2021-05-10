@@ -35,7 +35,7 @@ function userConnection($userMail, $pwd){
  */
 function getUsersConnectionInformation(){
     //Prepare query
-    $query = "SELECT `mail`, `password` FROM `utilisateurs`";
+    $query = "SELECT `email`, `password` FROM `users`";
 
     //Execute and return the query
     return executeQuery($query);
@@ -53,4 +53,33 @@ function getUserInformation($mail){
 
     //Execute and return query
     return executeQuery($query);
+}
+
+/**
+ * Function used to add new user into db
+ * Status for all new user is on
+ * @param $lastname - lastname of the new user
+ * @param $firstname - firstname of the new user
+ * @param $email - email of the new user
+ * @param $pwd - password of the new user
+ * @param $admin - status admin of the new user
+ * @return bool - success = true, failed = false
+ */
+function addUser($lastname, $firstname, $email, $pwd, $admin){
+    $return = false;
+
+    //Prepare query
+    $strSep = '\'';
+    $query = "INSERT INTO `users`(`firstname`, `lastname`, `email`, `password`, `adminStatus`) VALUES (".$strSep.$firstname.$strSep.",".$strSep.$lastname.$strSep.",".$strSep.$email.$strSep.",".$strSep.password_hash($pwd).$strSep.",".$admin.")";
+
+    //Try to execute query
+    try{
+        executeQuery($query, 'insert');
+        $return = true;
+    }
+    catch(Exception $e){
+        echo "<script>console.log('".$e."');</script>";
+        $return = false;
+    }
+    return $return;
 }

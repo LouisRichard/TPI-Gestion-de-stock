@@ -9,7 +9,7 @@ ob_start();
 
 ?>
 
-<h1>BIENVENU SUR LA PAGE D'ACCUEIL !!!</h1>
+<h1>BIENVENUE SUR LA PAGE D'ACCUEIL !!!</h1>
 
 <?php
 $content = ob_get_clean();
