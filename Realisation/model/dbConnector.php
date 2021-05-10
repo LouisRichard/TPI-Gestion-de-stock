@@ -18,8 +18,8 @@ function openDBConnexion(){
     $port = 3306;
     $charset = 'utf8';
     $dbName = 'gg110_tpi';
-    $userName = 'gg110_tpi_viewer';
-    $userPwd = '';
+    $userName = 'gg110_tpi_man';
+    $userPwd = decrypt('mkHndhU83csnUia.Dhjc73jhQWhiQkFfNDR6QjQ=');
 
     $dsn = $sqlDriver . ':host=' . $hostname . ';dbname=' . $dbName . ';port=' . $port . ';charset=' . $charset;
 
