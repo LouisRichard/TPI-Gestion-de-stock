@@ -83,3 +83,66 @@ function addUser($lastname, $firstname, $email, $pwd, $admin){
     }
     return $return;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * This function is used to know if the userLogin exist in an AD and if the password of the user is correct.
+ * If this two parameters are correct, the function give back basics information about the user (mail, first and last name)
+ * @param $userLogin - login of the user
+ * @param $userPwd - password of the user
+ * @return array - return userInformation
+ */
+function adVerification($userLogin, $userPwd){
+    putenv('LDAPTLS_REQCERT=never');
+    $result = null;
+
+    //verify if the ldaps path is correct and open a connection path
+    $ds=ldap_connect("ldaps://LDAPSPath:636");
+
+    ldap_set_option($ds, LDAP_OPT_PROTOCOL_VERSION, 3);
+    ldap_set_option($ds, LDAP_OPT_REFERRALS, 0);
+
+    if ($ds) {
+        //connect the user(login + pwd) with the ldap path
+        $r=ldap_bind($ds, $userLogin."@LDAPPath", $userPwd); // Connection of the user
+
+        if($r){
+            $result = array();
+
+            //search information about the specified user (samaccountname)
+            $sr=ldap_search($ds, "path where we need to check account", "samaccountname=".$userLogin);
+            //example of path "ou=personnel,dc=pedroletti,dc=ch"
+
+            $info = ldap_get_entries($ds, $sr);
+
+            //push information needed into the table result
+            array_push($result, $info[0]["sn"][0]);
+            array_push($result, $info[0]["givenname"][0]);
+            array_push($result, $info[0]["mail"][0]);
+
+            //close the ldap connection
+            ldap_close($ds);
+        }
+        else{
+            //close the ldap connection
+            ldap_close($ds);
+        }
+
+
+
+    }
+
+    return $result;
+}
