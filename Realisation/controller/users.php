@@ -17,7 +17,7 @@ function login($userMail, $pwd){
         require_once 'model/usersManager.php';
         $return = userConnection($userMail, $pwd);
         if($return != false){
-            createSession($return[0]['email'], $return[0]['lastname'], $return[0]['firstname']);
+            createSession($return[0]['email'], $return[0]['lastname'], $return[0]['firstname'], $return[0]['adminStatus']);
 
             $_SESSION['msg'] = 'loginSuccess';
             displayHome();
@@ -34,16 +34,18 @@ function login($userMail, $pwd){
  * @param $email - email of the user
  * @param $lastname - lastname of the user
  * @param $firstname - firstname of the user
+ * @param $status - admin status to know if user is an user or an admin
  */
-function createSession($email, $lastname, $firstname){
+function createSession($email, $lastname, $firstname, $status){
     $_SESSION['email'] = $email;
     $_SESSION['username'] = $lastname. " " .$firstname;
+    $_SESSION['status'] = $status;
 }
 
 /**
  * Function used to signOut of the web platform
  */
-function signOut()
+function logOut()
 {
     $_SESSION = array();
     session_destroy();

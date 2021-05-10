@@ -21,14 +21,11 @@
             <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
                 <a class="navbar-brand" href="/?action=displayHome">Gestionnaire de stock</a>
                 <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-                <!-- Navbar Search-->
-                <div class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0 text-white">
-                    Bonjour, Joe Doe
-                </div>
+                <div class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0 text-white"></div>
                 <!-- Navbar-->
                 <ul class="navbar-nav ml-auto ml-md-0">
                     <li class="nav-item dropdown">
-                        <a id="user" href="#!" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                        <a href="?action=logOut" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-sign-in-alt"></i></a>
                     </li>
                 </ul>
             </nav>
@@ -38,24 +35,26 @@
                         <div class="sb-sidenav-menu">
                             <div class="nav">
                                 <div class="sb-sidenav-menu-heading">Utilisateurs</div>
-                                <a class="nav-link" href="index.html">
+                                <a class="nav-link" href="?action=home">
                                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                     Accueil
                                 </a>
-                                <a class="nav-link" href="index.html">
+                                <a class="nav-link" href="?action=newConsumable">
                                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                     Nouveau consommable
                                 </a>
-                                <div class="sb-sidenav-menu-heading">Administrateurs</div>
-                                <a class="nav-link" href="charts.html">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                    Panneau administrateur
-                                </a>
+                                <?php if(isset($_SESSION['status']) && $_SESSION['status'] == 1) : ?>
+                                    <div class="sb-sidenav-menu-heading">Administrateurs</div>
+                                    <a class="nav-link" href="#">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                        Panneau administrateur
+                                    </a>
+                                <?php endif; ?>
                             </div>
                         </div>
                         <div class="sb-sidenav-footer">
                             <div class="small">Connecté en tant que :</div>
-                            Administrateur
+                            <?= $_SESSION['username']; ?>
                         </div>
                     </nav>
                 </div>

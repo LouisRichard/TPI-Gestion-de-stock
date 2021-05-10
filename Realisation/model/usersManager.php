@@ -35,7 +35,7 @@ function userConnection($userMail, $pwd){
  */
 function getUsersConnectionInformation(){
     //Prepare query
-    $query = "SELECT `email`, `password` FROM `users`";
+    $query = "SELECT `email`, `password` FROM `users` WHERE `status` = 1";
 
     //Execute and return the query
     return executeQuery($query);
@@ -49,7 +49,7 @@ function getUsersConnectionInformation(){
 function getUserInformation($mail){
     //Prepare query
     $strSep = '\'';
-    $query = "SELECT `email`, `lastname`, `firstname` FROM `users` WHERE email =".$strSep.$mail.$strSep;
+    $query = "SELECT `email`, `lastname`, `firstname`, `adminStatus` FROM `users` WHERE email =".$strSep.$mail.$strSep;
 
     //Execute and return query
     return executeQuery($query);

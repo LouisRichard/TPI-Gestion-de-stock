@@ -6,8 +6,9 @@
  **/
 
 ob_start();
-
 ?>
+
+    <h1>Page en construction ! Veuillez revenir plus tard !</h1>
 
 <?php
 

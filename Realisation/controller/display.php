@@ -33,21 +33,44 @@ function displayHome(){
  * Function used to display the admin panel
  */
 function displayAdminPanel(){
-
+    if(isset($_SESSION['username']) && $_SESSION['username'] != ''){
+        if($_SESSION['status'] == 1){
+            require 'view/adminPanel.php';
+        }
+        else{
+            require 'view/home.php';
+        }
+    }
+    else{
+        require 'view/login.php';
+    }
 }
 
 /**
  * Function that display the new user page
  */
 function displayNewUser(){
-    //TODO faire le check pour savoir si l'utilisateur est admin ou non
-
-    require 'view/newUser.php';
+    if(isset($_SESSION['username']) && $_SESSION['username'] != ''){
+        if($_SESSION['status'] == 1){
+            require 'view/newUser.php';
+        }
+        else{
+            require 'view/home.php';
+        }
+    }
+    else{
+        require 'view/login.php';
+    }
 }
 
 /**
  * Function to display page to add new consumable
  */
 function displayNewConsumable(){
-
+    if(isset($_SESSION['username']) && $_SESSION['username'] != ''){
+        require 'view/newConsumable.php';
+    }
+    else{
+        require 'view/login.php';
+    }
 }

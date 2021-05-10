@@ -31,6 +31,11 @@ if(isset($_GET['action'])){
             login($_POST['userMail'], $_POST['pwd']);
             break;
 
+        /**== Action for log out of the web platform ==**/
+        case 'logOut':
+            logOut();
+            break;
+
         /**== Action to display page for new consumable ==**/
         case 'newConsumable':
             displayNewConsumable();
