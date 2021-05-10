@@ -4,6 +4,7 @@
  * CreationFile date : 06.05.2021
  * Description : login page
  **/
+
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +44,9 @@
                                 </form>
                             </div>
                             <div class="card-footer text-center">
-
+                                <?php if(isset($_SESSION['msg']) && $_SESSION['msg'] == 'loginError') : ?>
+                                    <label class="small text-danger">Identifiants incorrects ! Veuillez réessayer !</label>
+                                <?php unset($_SESSION['msg']); endif; ?>
                             </div>
                         </div>
                     </div>
