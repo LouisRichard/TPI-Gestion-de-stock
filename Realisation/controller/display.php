@@ -22,6 +22,7 @@ function displayLogin(){
  */
 function displayHome(){
     if(isset($_SESSION['username']) && $_SESSION['username'] != ''){
+        $_SESSION['home'] = 'home';
         require 'view/home.php';
     }
     else{
