@@ -84,6 +84,30 @@ function addUser($lastname, $firstname, $email, $pwd, $admin){
     return $return;
 }
 
+/**
+ * Function to know if a user already exist in our DB
+ * @param $userEmail - email of the user
+ * @return bool - true = user already exit - false = user do not exist
+ */
+function userAlreadyExist($userEmail){
+    $result = true;
+
+    //prepare the query
+    $query = "SELECT `email` FROM `users`";
+
+    //execute the query and get the result into a $dbInformation
+    $dbInformation = executeQuery($query);
+
+    //check information
+    foreach ($dbInformation as $email){
+        if($email['email'] == $userEmail){
+            $result = false;
+        }
+    }
+
+    // return information
+    return $result;
+}
 
 
 

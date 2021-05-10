@@ -67,13 +67,18 @@ function newUser($post){
         $admin = true;
     }
 
-    //TODO Check si l'utilisateur exist déjà
-    if(addUser($lastname, $firstname, $email, $pwd, $admin)){
-        $_SESSION['msg'] = 'newUserSuccess';
+    if(!userAlreadyExist($email)){
+        if(addUser($lastname, $firstname, $email, $pwd, $admin)){
+            $_SESSION['msg'] = 'newUserSuccess';
+        }
+        else{
+            $_SESSION['msg'] = 'newUserFailed';
+        }
     }
     else{
-        $_SESSION['msg'] = 'newUserFailed';
+        $_SESSION['msg'] = 'newUserAlreadyExist';
     }
+
 
     displayNewUser();
 }
