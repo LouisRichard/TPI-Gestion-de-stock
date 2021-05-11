@@ -8,11 +8,15 @@
 ob_start();
 ?>
 
-    <h1>Page en construction ! Veuillez revenir plus tard !</h1>
+    <form action="?action=requestNewUser">
+        <input name="firstname" type="text" maxlength="55" required placeholder="John">
+        <input name="lastname" type="text" maxlength="60" required placeholder="Doe">
+        <input name="email" type="email" maxlength="256" required placeholder="john.doe@gmail.com">
+        <input name="pwd" type="password" maxlength="256" required placeholder="Mot de passe">
+        <input name="admin" type="checkbox" required>
+    </form>
 
 <?php
-
 $content = ob_get_clean();
 require "template.php";
-
-?><?php
+?>
