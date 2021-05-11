@@ -8,7 +8,7 @@
 ob_start();
 
 ?>
-    <h1>BIENVENUE SUR LA PAGE D'ACCUEIL !!!</h1>
+    <h1>Page d'accueil</h1>
 
     <div class="card-deck" style="flex-wrap: wrap; justify-content: space-evenly">
         <div class="card">
@@ -20,59 +20,51 @@ ob_start();
                 </div>
             </div>
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
+                <h5 class="card-title">Titre du consommable</h5>
+                <p class="card-text">contenu type et éléments liés à mettre en place</p>
+                <btn class="btn btn-primary">sauvegarder</btn>
             </div>
         </div>
         <div class="card">
             <div class="card-header text-center" >
                 <div class="d-flex flex-row" style="justify-content: center">
                     <div class="align-self-center"><i class="fas fa-plus"></i></div>
-                    <div class="align-self-center ml-4"><div class="rating">102</div></div>
+                    <div class="align-self-center ml-4"><div class="rating">78</div></div>
                     <div class="align-self-center ml-4"><i class="fas fa-minus"></i></div>
                 </div>
             </div>
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
+                <h5 class="card-title">Titre du consommable</h5>
+                <p class="card-text">contenu type et éléments liés à mettre en place</p>
+                <btn class="btn btn-primary">sauvegarder</btn>
             </div>
         </div>
         <div class="card">
             <div class="card-header text-center" >
                 <div class="d-flex flex-row" style="justify-content: center">
                     <div class="align-self-center"><i class="fas fa-plus"></i></div>
-                    <div class="align-self-center ml-4"><div class="rating">45</div></div>
+                    <div class="align-self-center ml-4"><div class="rating">34</div></div>
                     <div class="align-self-center ml-4"><i class="fas fa-minus"></i></div>
                 </div>
             </div>
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
+                <h5 class="card-title">Titre du consommable</h5>
+                <p class="card-text">contenu type et éléments liés à mettre en place</p>
+                <btn class="btn btn-primary">sauvegarder</btn>
             </div>
         </div>
         <div class="card">
             <div class="card-header text-center" >
                 <div class="d-flex flex-row" style="justify-content: center">
                     <div class="align-self-center"><i class="fas fa-plus"></i></div>
-                    <div class="align-self-center ml-4"><div class="rating">4</div></div>
+                    <div class="align-self-center ml-4"><div class="rating">3</div></div>
                     <div class="align-self-center ml-4"><i class="fas fa-minus"></i></div>
                 </div>
             </div>
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
+                <h5 class="card-title">Titre du consommable</h5>
+                <p class="card-text">contenu type et éléments liés à mettre en place</p>
+                <btn class="btn btn-primary">sauvegarder</btn>
             </div>
         </div>
     </div>

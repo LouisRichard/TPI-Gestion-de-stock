@@ -80,7 +80,7 @@ function newUser($post){
     else{
         $_SESSION['msg'] = 'newUserAlreadyExist';
     }
-    
+
     displayNewUser();
 }
 
