@@ -59,3 +59,13 @@ CREATE TABLE `gg110_tpi`.`product_types` (
     `name` VARCHAR(256) NOT NULL ,
     PRIMARY KEY (`IDProductTypes`))
     ENGINE = InnoDB;
+
+/**== TABLES CONSUMABLES_USERS ==**/
+CREATE TABLE `gg110_tpi`.`consumables_users` (
+    `idConsumablesUsers` INT NOT NULL AUTO_INCREMENT ,
+    `quantity` INT NOT NULL ,
+    `date` DATE NOT NULL ,
+    `FKConsumables` INT NOT NULL ,
+    `FKUsers` INT NOT NULL ,
+    PRIMARY KEY (`idConsumablesUsers`))
+    ENGINE = InnoDB;
