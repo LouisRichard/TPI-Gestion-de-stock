@@ -61,14 +61,16 @@ function newUser($post){
     $lastname = $post['lastname'];
     $firstname = $post['firstname'];
     $email = $post['email'];
-    $pwd = $post['password'];
-    $admin = false;
+    $pwd = $post['pwd'];
+    $admin = 0;
     if(isset($post['admin'])){
-        $admin = true;
+        $admin = 1;
     }
 
+    require_once 'model/usersManager.php';
     if(!userAlreadyExist($email)){
         if(addUser($lastname, $firstname, $email, $pwd, $admin)){
+            $_SESSION['newUsername'] = $lastname . " " . $firstname;
             $_SESSION['msg'] = 'newUserSuccess';
         }
         else{
@@ -78,8 +80,7 @@ function newUser($post){
     else{
         $_SESSION['msg'] = 'newUserAlreadyExist';
     }
-
-
+    
     displayNewUser();
 }
 

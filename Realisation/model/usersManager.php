@@ -70,7 +70,7 @@ function addUser($lastname, $firstname, $email, $pwd, $admin){
 
     //Prepare query
     $strSep = '\'';
-    $query = "INSERT INTO `users`(`firstname`, `lastname`, `email`, `password`, `adminStatus`) VALUES (".$strSep.$firstname.$strSep.",".$strSep.$lastname.$strSep.",".$strSep.$email.$strSep.",".$strSep.password_hash($pwd).$strSep.",".$admin.")";
+    $query = "INSERT INTO `users`(`firstname`, `lastname`, `email`, `password`, `adminStatus`) VALUES (".$strSep.$firstname.$strSep.",".$strSep.$lastname.$strSep.",".$strSep.$email.$strSep.",".$strSep.password_hash($pwd, PASSWORD_DEFAULT).$strSep.",".$admin.")";
 
     //Try to execute query
     try{
@@ -90,7 +90,7 @@ function addUser($lastname, $firstname, $email, $pwd, $admin){
  * @return bool - true = user already exit - false = user do not exist
  */
 function userAlreadyExist($userEmail){
-    $result = true;
+    $result = false;
 
     //prepare the query
     $query = "SELECT `email` FROM `users`";
@@ -101,7 +101,7 @@ function userAlreadyExist($userEmail){
     //check information
     foreach ($dbInformation as $email){
         if($email['email'] == $userEmail){
-            $result = false;
+            $result = true;
         }
     }
 

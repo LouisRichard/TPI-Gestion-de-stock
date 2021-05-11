@@ -54,6 +54,7 @@ function displayAdminPanel(){
 function displayNewUser(){
     if(isset($_SESSION['username']) && $_SESSION['username'] != ''){
         if($_SESSION['status'] == 1){
+            $_SESSION['adminPanel'] = 'adminPanel';
             require 'view/newUser.php';
         }
         else{
