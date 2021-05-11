@@ -15,7 +15,8 @@
             <meta name="author" content="Pedroletti Michael" />
             <title>Accueil</title>
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-            <link href="view/style/styles.css" rel="stylesheet" />
+            <link href="view/style/styles.css" rel="stylesheet">
+            <link href="view/style/circle.css" rel="stylesheet">
         </head>
         <body class="sb-nav-fixed">
             <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
