@@ -124,7 +124,7 @@ ob_start();
 
 
     <?php if($dangerConsumables != null) : ?>
-        <h1 class="mb-1">Attentions quantités faibles</h1>
+        <h1 class="mb-1">Attention quantités faibles</h1>
         <div class="card-deck mb-3" id="lowQuantityConsumable" style="flex-wrap: wrap; justify-content: space-evenly">
             <?php foreach($dangerConsumables as $consumable) : ?>
                 <div class="card">
