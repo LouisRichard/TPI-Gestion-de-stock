@@ -23,6 +23,20 @@ function displayLogin(){
 function displayHome(){
     if(isset($_SESSION['username']) && $_SESSION['username'] != ''){
         $_SESSION['home'] = 'home';
+        require_once 'model/displayRequestManager.php';
+        $allConsumables = getAllConsumables();
+        $productsInformation = getProducts();
+        $brands = getBrands();
+        $types = getConsumableTypes();
+
+        if(count($allConsumables['consumablesDanger']) != 0){
+            $dangerConsumables = $allConsumables['consumablesDanger'];
+            $consumables = $allConsumables['consumables'];
+        }
+        else{
+            $dangerConsumables = null;
+            $consumables = $allConsumables['consumables'];
+        }
         require 'view/home.php';
     }
     else{

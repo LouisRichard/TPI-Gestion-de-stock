@@ -52,12 +52,14 @@ ob_start();
                     </div>
                     <div class="w-100 d-flex flex-wrap">
                         <div class="w-50 p-2 flex-column">
-                            <button class="btn btn-primary w-100 mb-3">Cartouche d'encre</button>
-                            <button class="btn btn-primary w-100 mb-3">Waste toner</button>
+                            <?php $i=0; foreach ($types as $type) : if($i%2 != 1) : ?>
+                                <button class="btn btn-primary w-100 mb-3"><?= $type['name']; ?></button>
+                            <?php endif; $i++; endforeach; ?>
                         </div>
                         <div class="w-50 p-2 flex-column">
-                            <button class="btn btn-primary w-100 mb-3">Papier</button>
-                            <button class="btn btn-primary w-100 mb-3">Drum</button>
+                            <?php $i=0; foreach ($types as $type) :  if($i%2 == 1) : ?>
+                            <button class="btn btn-primary w-100 mb-3"><?= $type['name']; ?></button>
+                            <?php endif; $i++; endforeach; ?>
                         </div>
                     </div>
                 </div>
@@ -77,12 +79,14 @@ ob_start();
                     </div>
                     <div class="w-100 d-flex flex-wrap">
                         <div class="w-50 p-2 flex-column">
-                            <button class="btn btn-primary w-100 mb-3">Brother</button>
-                            <button class="btn btn-primary w-100 mb-3">HP</button>
+                            <?php $i=0; foreach ($brands as $brand) : if($i%2 != 1) : ?>
+                                <button class="btn btn-primary w-100 mb-3"><?= $brand['name']; ?></button>
+                            <?php endif; $i++; endforeach; ?>
                         </div>
                         <div class="w-50 p-2 flex-column">
-                            <button class="btn btn-primary w-100 mb-3">Canon</button>
-                            <button class="btn btn-primary w-100 mb-3">Xerox</button>
+                            <?php $i=0; foreach ($brands as $brand) :  if($i%2 == 1) : ?>
+                                <button class="btn btn-primary w-100 mb-3"><?= $brand['name']; ?></button>
+                            <?php endif; $i++; endforeach; ?>
                         </div>
                     </div>
                 </div>
@@ -102,12 +106,14 @@ ob_start();
                     </div>
                     <div class="w-100 d-flex flex-wrap">
                         <div class="w-50 p-2 flex-column">
-                            <button class="btn btn-primary w-100 mb-3">Brother XC-500</button>
-                            <button class="btn btn-primary w-100 mb-3">HP Printer 5000</button>
+                            <?php $i=0; foreach ($productsInformation as $product) : if($i%2 != 1) : ?>
+                                <button class="btn btn-primary w-100 mb-3"><?= $product['brand']." ".$product['type']." ".$product['name']; ?></button>
+                            <?php endif; $i++; endforeach; ?>
                         </div>
                         <div class="w-50 p-2 flex-column">
-                            <button class="btn btn-primary w-100 mb-3">Canon R-300</button>
-                            <button class="btn btn-primary w-100 mb-3">Xerox y-4</button>
+                            <?php $i=0; foreach ($productsInformation as $product) :  if($i%2 == 1) : ?>
+                                <button class="btn btn-primary w-100 mb-3"><?= $product['brand']." ".$product['type']." ".$product['name']; ?></button>
+                            <?php endif; $i++; endforeach; ?>
                         </div>
                     </div>
                 </div>
@@ -117,222 +123,75 @@ ob_start();
 
 
 
+    <?php if($dangerConsumables != null) : ?>
+        <h1 class="mb-1">Attentions quantités faibles</h1>
+        <div class="card-deck mb-3" id="lowQuantityConsumable" style="flex-wrap: wrap; justify-content: space-evenly">
+            <?php foreach($dangerConsumables as $consumable) : ?>
+                <div class="card">
+                    <div class="card-header text-center" >
+                        <div class="d-flex flex-row" style="justify-content: center">
+                            <div class="align-self-center"><i class="fas fa-plus"></i></div>
+                            <div class="align-self-center ml-4"><div class="rating"><?= $consumable['stock']; ?></div></div>
+                            <div class="align-self-center ml-4"><i class="fas fa-minus"></i></div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title"><?= $consumable['brand']." ".$consumable['name']; ?></h5>
+                        <p class="card-text">
+                        <p class="p-2">Type : <?= $consumable['type']; ?> </p>
+                        <div class="d-flex flex-wrap">
+                            <div class="w-50 p-2 flex-column">
+                                <p>Elément lié :</p>
+                            </div>
+                            <div class="w-50 p-2 flex-column">
+                                <?php foreach($consumable['products'] as $product) : ?>
+                                    <div class="text-left"><?= $product['productType']." ".$product['productBrands']." ".$product['productName'] ?></div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                        </p>
+                        <div class="text-center">
+                            <btn class="btn btn-primary">sauvegarder</btn>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
 
-    <h1 class="mb-1">Attentions quantités faibles</h1>
-    <div class="card-deck mb-3" id="lowQuantityConsumable" style="flex-wrap: wrap; justify-content: space-evenly">
-        <div class="card">
-            <div class="card-header text-center" >
-                <div class="d-flex flex-row" style="justify-content: center">
-                    <div class="align-self-center"><i class="fas fa-plus"></i></div>
-                    <div class="align-self-center ml-4"><div class="rating">4</div></div>
-                    <div class="align-self-center ml-4"><i class="fas fa-minus"></i></div>
-                </div>
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">Cartouche d'encre Y RW-100</h5>
-                <p class="card-text">
-                <p class="p-2">Type : cartouche d'encre</p>
-                <div class="d-flex flex-wrap">
-                    <div class="w-50 p-2 flex-column">
-                        <p>Elément lié :</p>
-                    </div>
-                    <div class="w-50 p-2 flex-column">
-                        <div class="text-center">Brother XC-500</div>
-                    </div>
-                </div>
-                </p>
-                <div class="text-center">
-                    <btn class="btn btn-primary">sauvegarder</btn>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header text-center" >
-                <div class="d-flex flex-row" style="justify-content: center">
-                    <div class="align-self-center"><i class="fas fa-plus"></i></div>
-                    <div class="align-self-center ml-4"><div class="rating">3</div></div>
-                    <div class="align-self-center ml-4"><i class="fas fa-minus"></i></div>
-                </div>
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">Cartouche d'encre C RW-100</h5>
-                <p class="card-text">
-                <p class="p-2">Type : cartouche d'encre</p>
-                <div class="d-flex flex-wrap">
-                    <div class="w-50 p-2 flex-column">
-                        <p>Elément lié :</p>
-                    </div>
-                    <div class="w-50 p-2 flex-column">
-                        <div class="text-center">Brother XC-500</div>
-                    </div>
-                </div>
-                </p>
-                <div class="text-center">
-                    <btn class="btn btn-primary">sauvegarder</btn>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header text-center" >
-                <div class="d-flex flex-row" style="justify-content: center">
-                    <div class="align-self-center"><i class="fas fa-plus"></i></div>
-                    <div class="align-self-center ml-4"><div class="rating">1</div></div>
-                    <div class="align-self-center ml-4"><i class="fas fa-minus"></i></div>
-                </div>
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">Cartouche d'encre M RW-100</h5>
-                <p class="card-text">
-                <p class="p-2">Type : cartouche d'encre</p>
-                <div class="d-flex flex-wrap">
-                    <div class="w-50 p-2 flex-column">
-                        <p>Elément lié :</p>
-                    </div>
-                    <div class="w-50 p-2 flex-column">
-                        <div class="text-center">Brother XC-500</div>
-                    </div>
-                </div>
-                </p>
-                <div class="text-center">
-                    <btn class="btn btn-primary">sauvegarder</btn>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header text-center" >
-                <div class="d-flex flex-row" style="justify-content: center">
-                    <div class="align-self-center"><i class="fas fa-plus"></i></div>
-                    <div class="align-self-center ml-4"><div class="rating">5</div></div>
-                    <div class="align-self-center ml-4"><i class="fas fa-minus"></i></div>
-                </div>
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">Cartouche d'encre B RW-100</h5>
-                <p class="card-text">
-                <p class="p-2">Type : cartouche d'encre</p>
-                <div class="d-flex flex-wrap">
-                    <div class="w-50 p-2 flex-column">
-                        <p>Eléments liés :</p>
-                    </div>
-                    <div class="w-50 p-2 flex-column">
-                        <div class="text-center">Brother XC-500</div>
-                        <div class="text-center">Brother XC-500</div>
-                    </div>
-                </div>
-                </p>
-                <div class="text-center">
-                    <btn class="btn btn-primary">sauvegarder</btn>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <h1 class="mb-1">Consommables</h1>
     <div class="card-deck" id="consumable" style="flex-wrap: wrap; justify-content: space-evenly">
-        <div class="card">
-            <div class="card-header text-center" >
-                <div class="d-flex flex-row" style="justify-content: center">
-                    <div class="align-self-center"><i class="fas fa-plus"></i></div>
-                    <div class="align-self-center ml-4"><div class="rating">13</div></div>
-                    <div class="align-self-center ml-4"><i class="fas fa-minus"></i></div>
+        <?php foreach($consumables as $consumable) : ?>
+            <div class="card">
+                <div class="card-header text-center" >
+                    <div class="d-flex flex-row" style="justify-content: center">
+                        <div class="align-self-center"><i class="fas fa-plus"></i></div>
+                        <div class="align-self-center ml-4"><div class="rating"><?= $consumable['stock']; ?></div></div>
+                        <div class="align-self-center ml-4"><i class="fas fa-minus"></i></div>
+                    </div>
                 </div>
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">Cartouche d'encre Y RW-400</h5>
-                <p class="card-text">
-                    <p class="p-2">Type : cartouche d'encre</p>
+                <div class="card-body">
+                    <h5 class="card-title"><?= $consumable['brand']." ".$consumable['name']; ?></h5>
+                    <p class="card-text">
+                    <p class="p-2">Type : <?= $consumable['type']; ?> </p>
                     <div class="d-flex flex-wrap">
                         <div class="w-50 p-2 flex-column">
                             <p>Elément lié :</p>
                         </div>
                         <div class="w-50 p-2 flex-column">
-                            <div class="text-center">Brother XC-500</div>
+                            <?php foreach($consumable['products'] as $product) : ?>
+                                <div class="text-left"><?= $product['productType']." ".$product['productBrands']." ".$product['productName'] ?></div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
-                </p>
-                <div class="text-center">
-                    <btn class="btn btn-primary">sauvegarder</btn>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header text-center" >
-                <div class="d-flex flex-row" style="justify-content: center">
-                    <div class="align-self-center"><i class="fas fa-plus"></i></div>
-                    <div class="align-self-center ml-4"><div class="rating">36</div></div>
-                    <div class="align-self-center ml-4"><i class="fas fa-minus"></i></div>
-                </div>
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">Cartouche d'encre M RW-400</h5>
-                <p class="card-text">
-                <p class="p-2">Type : cartouche d'encre</p>
-                <div class="d-flex flex-wrap">
-                    <div class="w-50 p-2 flex-column">
-                        <p>Elément lié :</p>
-                    </div>
-                    <div class="w-50 p-2 flex-column">
-                        <div class="text-center">Brother XC-500</div>
+                    </p>
+                    <div class="text-center">
+                        <btn class="btn btn-primary">sauvegarder</btn>
                     </div>
                 </div>
-                </p>
-                <div class="text-center">
-                    <btn class="btn btn-primary">sauvegarder</btn>
-                </div>
             </div>
-        </div>
-        <div class="card">
-            <div class="card-header text-center" >
-                <div class="d-flex flex-row" style="justify-content: center">
-                    <div class="align-self-center"><i class="fas fa-plus"></i></div>
-                    <div class="align-self-center ml-4"><div class="rating">15</div></div>
-                    <div class="align-self-center ml-4"><i class="fas fa-minus"></i></div>
-                </div>
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">Cartouche d'encre C RW-400</h5>
-                <p class="card-text">
-                <p class="p-2">Type : cartouche d'encre</p>
-                <div class="d-flex flex-wrap">
-                    <div class="w-50 p-2 flex-column">
-                        <p>Elément lié :</p>
-                    </div>
-                    <div class="w-50 p-2 flex-column">
-                        <div class="text-center">Brother XC-500</div>
-                    </div>
-                </div>
-                </p>
-                <div class="text-center">
-                    <btn class="btn btn-primary">sauvegarder</btn>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header text-center" >
-                <div class="d-flex flex-row" style="justify-content: center">
-                    <div class="align-self-center"><i class="fas fa-plus"></i></div>
-                    <div class="align-self-center ml-4"><div class="rating">9</div></div>
-                    <div class="align-self-center ml-4"><i class="fas fa-minus"></i></div>
-                </div>
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">Cartouche d'encre B RW-400</h5>
-                <p class="card-text">
-                <p class="p-2">Type : cartouche d'encre</p>
-                <div class="d-flex flex-wrap">
-                    <div class="w-50 p-2 flex-column">
-                        <p>Elément lié :</p>
-                    </div>
-                    <div class="w-50 p-2 flex-column">
-                        <div class="text-center">Brother XC-500</div>
-                    </div>
-                </div>
-                </p>
-                <div class="text-center">
-                    <btn class="btn btn-primary">sauvegarder</btn>
-                </div>
-            </div>
-        </div>
+        <?php endforeach; ?>
     </div>
 
     <script>
