@@ -1,3 +1,9 @@
+/**
+ * Author : Michael Pedroletti
+ * Creation : 20.05.2021
+ * Description : contain functions used for the display of the home page
+ **/
+
 function manageStock(idConsumable, action){
     let actualElement = document.getElementById(idConsumable).getElementsByTagName("span")[0];
     let stock = parseInt(actualElement.innerHTML, 10);

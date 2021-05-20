@@ -12,6 +12,7 @@ ob_start();
         <script rel="javascript" src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script rel="javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
         <script rel="javascript" src="view/js/home.js"></script>
+        <script rel="javascript" src="view/js/filter.js"></script>
     </head>
     <!-- Modal notification -->
     <?php if (isset($_SESSION['msg'])) : ?>
@@ -108,12 +109,12 @@ ob_start();
                     <div class="w-100 d-flex flex-wrap">
                         <div class="w-50 p-2 flex-column">
                             <?php $i=0; foreach ($productsInformation as $product) : if($i%2 != 1) : ?>
-                                <button class="btn btn-primary w-100 mb-3"><?= $product['brand']." ".$product['type']." ".$product['name']; ?></button>
+                                <button class="btn btn-primary w-100 mb-3" onclick="filterElements('linkedElement', '<?= $product['type']." ".$product['brand']." ".$product['name']; ?>')"><?= $product['type']." ".$product['brand']." ".$product['name']; ?></button>
                             <?php endif; $i++; endforeach; ?>
                         </div>
                         <div class="w-50 p-2 flex-column">
                             <?php $i=0; foreach ($productsInformation as $product) :  if($i%2 == 1) : ?>
-                                <button class="btn btn-primary w-100 mb-3"><?= $product['brand']." ".$product['type']." ".$product['name']; ?></button>
+                                <button class="btn btn-primary w-100 mb-3" onclick="filterElements('linkedElement', '<?= $product['type']." ".$product['brand']." ".$product['name']; ?>')"><?= $product['type']." ".$product['brand']." ".$product['name']; ?></button>
                             <?php endif; $i++; endforeach; ?>
                         </div>
                     </div>
@@ -137,22 +138,22 @@ ob_start();
                         </div>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title"><?= $consumable['brand']." ".$consumable['name']; ?></h5>
+                        <h5 class="card-title" name="consumableBrand"><?= $consumable['brand']." ".$consumable['name']; ?></h5>
                         <p class="card-text">
-                        <p class="p-2">Type : <?= $consumable['type']; ?> </p>
+                        <p class="p-2" name="consumableType">Type : <?= $consumable['type']; ?> </p>
                         <div class="d-flex flex-wrap">
                             <div class="w-50 p-2 flex-column">
                                 <p>Elément lié :</p>
                             </div>
                             <div class="w-50 p-2 flex-column">
                                 <?php foreach($consumable['products'] as $product) : ?>
-                                    <div class="text-left"><?= $product['productType']." ".$product['productBrands']." ".$product['productName'] ?></div>
+                                    <div class="text-left" name="consumableLinkedElement"><?= $product['productType']." ".$product['productBrands']." ".$product['productName'] ?></div>
                                 <?php endforeach; ?>
                             </div>
                         </div>
                         </p>
                         <div class="text-center">
-                            <btn class="btn btn-primary">sauvegarder</btn>
+                            <btn class="btn btn-primary">Sauvegarder</btn>
                         </div>
                     </div>
                 </div>
@@ -173,22 +174,26 @@ ob_start();
                     </div>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title"><?= $consumable['brand']." ".$consumable['name']; ?></h5>
+                    <h5 class="card-title" name="consumableBrand"><?= $consumable['brand']." ".$consumable['name']; ?></h5>
                     <p class="card-text">
-                    <p class="p-2">Type : <?= $consumable['type']; ?> </p>
+                    <p class="p-2" name="consumableType">Type : <?= $consumable['type']; ?> </p>
                     <div class="d-flex flex-wrap">
                         <div class="w-50 p-2 flex-column">
-                            <p>Elément lié :</p>
+                            <?php if(count($consumable['products']) > 1) :?>
+                                <p>Eléments liés :</p>
+                            <?php else : ?>
+                                <p>Elément lié :</p>
+                            <?php endif; ?>
                         </div>
                         <div class="w-50 p-2 flex-column">
                             <?php foreach($consumable['products'] as $product) : ?>
-                                <div class="text-left"><?= $product['productType']." ".$product['productBrands']." ".$product['productName'] ?></div>
+                                <div class="text-left" name="consumableLinkedElement"><?= $product['productType']." ".$product['productBrands']." ".$product['productName'] ?></div>
                             <?php endforeach; ?>
                         </div>
                     </div>
                     </p>
                     <div class="text-center">
-                        <btn class="btn btn-primary">sauvegarder</btn>
+                        <btn class="btn btn-primary">Sauvegarder</btn>
                     </div>
                 </div>
             </div>
