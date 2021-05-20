@@ -29,7 +29,7 @@ function displayHome(){
         $brands = getBrands();
         $types = getConsumableTypes();
 
-        if(count($allConsumables['consumablesDanger']) != 0){
+        if(isset($allConsumables['consumablesDanger']) && count($allConsumables['consumablesDanger']) != 0){
             $dangerConsumables = $allConsumables['consumablesDanger'];
             $consumables = $allConsumables['consumables'];
         }

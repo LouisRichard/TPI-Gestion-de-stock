@@ -4,13 +4,19 @@
  * Description : contain functions used for the display of the home page
  **/
 
+/**
+ *
+ * @param idConsumable
+ * @param action
+ */
 function manageStock(idConsumable, action){
     let actualElement = document.getElementById(idConsumable).getElementsByTagName("span")[0];
     let stock = parseInt(actualElement.innerHTML, 10);
     if(action === "-"){
         if(stock === 0){
-            alert("Seuil atteint nous ne pouvons descendre en dessous de 0! Message temporaire, à modifier!");
-            //TODO CREER UNE ERREUR PERMETTANT D'AVERTIR L'UTILISATEUR QUE LE SEUIL A ETE ATTEINT
+            msgModificationStock.innerHTML = "Seuil atteint nous ne pouvons descendre en dessous de 0 !";
+            btnModificationStock.classList.add("btn-danger");
+            modificationStock.show();
         }
         else{
             stock --;
@@ -75,4 +81,34 @@ function score(){
         // Add the new class list
         rating.classList.add(scoreClass);
     });
+}
+
+function sendData(data) {
+    var XHR = new XMLHttpRequest();
+    var FD  = new FormData();
+
+    // Put data in object FormData
+    for(name in data) {
+        FD.append(name, data[name]);
+    }
+
+    // Define text and call modal if the operation is a success
+    XHR.addEventListener('load', function(event) {
+        msgModificationStock.innerHTML = "La sauvegarde des données a été un succès !";
+        btnModificationStock.classList.add("btn-success");
+        modificationStock.show();
+    });
+
+    // Define text and call modal if the operation is a mess
+    XHR.addEventListener('error', function(event) {
+        msgModificationStock.innerHTML = "Une erreur inconnue est survenue ! Veuilez réessayer plus tard !";
+        btnModificationStock.classList.add("btn-danger");
+        modificationStock.show();
+    });
+
+    // Configure the request
+    XHR.open('POST', 'https://devtpi.pedroletti.ch/model/dynamicSendTest.php');
+
+    // Send object FormData
+    XHR.send(FD);
 }

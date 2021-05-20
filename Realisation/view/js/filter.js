@@ -4,7 +4,11 @@
  * Description : This file contain function used to filter elements on the home page
  **/
 
-
+/**
+ * Function used to filter elements present on the home page
+ * @param filterType = define which type of data we need to filter
+ * @param filter = the element that we need to find
+ */
 function filterElements(filterType, filter) {
     let cards = document.querySelectorAll(".card");
 

@@ -41,6 +41,24 @@ ob_start();
     </script>
     <?php unset($_SESSION['msg']); endif; ?>
 
+    <!-- MODAL Notification modification stock -->
+    <div class="modal fade" id="modificationStock" tabindex="-1" role="dialog"
+         aria-labelledby="modificationStock" aria-hidden="true">
+        <div class="modal-dialog m-auto w-470-px" role="document" style="top: 45%;">
+            <div class="modal-content w-100">
+                <div class="modal-body">
+                    <div class="w-100">
+                        <h6 class="text-center pt-2">
+                            <p id="modificationStockMessage"></p>
+                            <button type="submit" id="modificationStockBtn" class="btn float-right btn-close-phone" data-bs-dismiss="modal">Fermer</button>
+                        </h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!-- FILTER MODAL -->
     <div class="modal fade" id="typeFilterModal" tabindex="-1" role="dialog"
          aria-labelledby="typeFilterModal" aria-hidden="true">
@@ -64,6 +82,7 @@ ob_start();
                             <?php endif; $i++; endforeach; ?>
                         </div>
                     </div>
+                    <button class="btn btn-primary w-100 mb-3" onclick="filterElements('type', '')">Tous les types</button>
                 </div>
             </div>
         </div>
@@ -91,6 +110,7 @@ ob_start();
                             <?php endif; $i++; endforeach; ?>
                         </div>
                     </div>
+                    <button class="btn btn-primary w-100 mb-3" onclick="filterElements('brand', '')">Toutes les marques</button>
                 </div>
             </div>
         </div>
@@ -118,6 +138,7 @@ ob_start();
                             <?php endif; $i++; endforeach; ?>
                         </div>
                     </div>
+                    <button class="btn btn-primary w-100 mb-3" onclick="filterElements('linkedElement', '')">Toutes les éléments liés</button>
                 </div>
             </div>
         </div>
@@ -125,7 +146,7 @@ ob_start();
 
 
 
-    <?php if($dangerConsumables != null) : ?>
+    <?php if(isset($dangerConsumables) && $dangerConsumables != null) : ?>
         <h1 class="mb-1">Attention quantités faibles</h1>
         <div class="card-deck mb-3" id="lowQuantityConsumable" style="flex-wrap: wrap; justify-content: space-evenly">
             <?php foreach($dangerConsumables as $consumable) : ?>
@@ -201,33 +222,15 @@ ob_start();
     </div>
 
     <script>
+        // Load score information
         window.onload = scoreOnLoad;
 
-        function sendData(data) {
-            var XHR = new XMLHttpRequest();
-            var FD  = new FormData();
-
-            // Mettez les données dans l'objet FormData
-            for(name in data) {
-                FD.append(name, data[name]);
-            }
-
-            // Définissez ce qui se passe si la soumission s'est opérée avec succès
-            XHR.addEventListener('load', function(event) {
-                alert('Ouais ! Données envoyées et réponse chargée.');
-            });
-
-            // Definissez ce qui se passe en cas d'erreur
-            XHR.addEventListener('error', function(event) {
-                alert('Oups! Quelque chose s\'est mal passé.');
-            });
-
-            // Configurez la requête
-            XHR.open('POST', 'https://devtpi.pedroletti.ch/model/dynamicSendTest.php');
-
-            // Expédiez l'objet FormData ; les en-têtes HTTP sont automatiquement définies
-            XHR.send(FD);
-        }
+        // Creation of const that I need to have to display information for users
+        const modificationStock = new bootstrap.Modal(document.getElementById('modificationStock'), {
+            keyboard: false
+        });
+        const msgModificationStock = document.getElementById("modificationStockMessage");
+        const btnModificationStock = document.getElementById("modificationStockBtn");
     </script>
 
 <?php
