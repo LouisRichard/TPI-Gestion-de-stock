@@ -11,6 +11,7 @@ ob_start();
     <head>
         <script rel="javascript" src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script rel="javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script rel="javascript" src="view/js/home.js"></script>
     </head>
     <!-- Modal notification -->
     <?php if (isset($_SESSION['msg'])) : ?>
@@ -130,9 +131,9 @@ ob_start();
                 <div class="card">
                     <div class="card-header text-center" >
                         <div class="d-flex flex-row" style="justify-content: center">
-                            <div class="align-self-center"><i class="fas fa-plus" onclick="manageStock('<?= $consumable['IDConsumables']; ?>', '+')"></i></div>
+                            <div class="align-self-center"><i class="fas fa-plus" type="button" onclick="manageStock('<?= $consumable['IDConsumables']; ?>', '+')"></i></div>
                             <div class="align-self-center ml-4"><div class="rating" id="<?= $consumable['IDConsumables']; ?>"><?= $consumable['stock']; ?></div></div>
-                            <div class="align-self-center ml-4"><i class="fas fa-minus" onclick="manageStock('<?= $consumable['IDConsumables']; ?>', '-')"></i></div>
+                            <div class="align-self-center ml-4"><i class="fas fa-minus" type="button" onclick="manageStock('<?= $consumable['IDConsumables']; ?>', '-')"></i></div>
                         </div>
                     </div>
                     <div class="card-body">
@@ -166,9 +167,9 @@ ob_start();
             <div class="card">
                 <div class="card-header text-center" >
                     <div class="d-flex flex-row" style="justify-content: center">
-                        <div class="align-self-center"><i class="fas fa-plus" onclick="manageStock('<?= $consumable['IDConsumables']; ?>', '+')"></i></div>
+                        <div class="align-self-center"><i class="fas fa-plus" type="button" onclick="manageStock('<?= $consumable['IDConsumables']; ?>', '+')"></i></div>
                         <div class="align-self-center ml-4"><div class="rating" id="<?= $consumable['IDConsumables']; ?>"><?= $consumable['stock']; ?></div></div>
-                        <div class="align-self-center ml-4"><i class="fas fa-minus" onclick="manageStock('<?= $consumable['IDConsumables']; ?>', '-')"></i></div>
+                        <div class="align-self-center ml-4"><i class="fas fa-minus" type="button" onclick="manageStock('<?= $consumable['IDConsumables']; ?>', '-')"></i></div>
                     </div>
                 </div>
                 <div class="card-body">
@@ -195,72 +196,7 @@ ob_start();
     </div>
 
     <script>
-        // Find all rating items
-        const ratings = document.querySelectorAll(".rating");
-
-        function scoreOnLoad(){
-            // Iterate over all rating items
-            ratings.forEach((rating) => {
-                // Get content and get score as an int
-                const ratingContent = rating.innerHTML;
-                const ratingScore = parseInt(ratingContent, 10);
-
-                // Define if the score is good, meh or bad according to its value
-                const scoreClass =
-                    ratingScore < 6 ? "bad" : ratingScore < 15 ? "meh" : "good";
-
-                // Add score class to the rating
-                rating.classList.add(scoreClass);
-
-                // Wrap the content in a tag to show it above the pseudo element that masks the bar
-                rating.innerHTML = `<span>${ratingScore}</span>`;
-            });
-        }
-
-        function score(){
-            ratings.forEach((rating) => {
-                const  ratingContent = rating.getElementsByTagName("span")[0].innerHTML;
-                const ratingScore = parseInt(ratingContent, 10);
-
-                const  scoreClass =
-                    ratingScore < 6 ? "bad" : ratingScore <15 ? "meh" : "good";
-
-                if (rating.classList.contains("bad")){
-                    rating.classList.remove("bad");
-                }
-                else if (rating.classList.contains("meh")){
-                    rating.classList.remove("meh");
-                }
-                else {
-                    rating.classList.remove("good");
-                }
-
-                rating.classList.add(scoreClass);
-            });
-        }
-
         window.onload = scoreOnLoad;
-    </script>
-    <script>
-        function manageStock(idConsumable, action){
-            let actualElement = document.getElementById(idConsumable).getElementsByTagName("span")[0];
-            let stock = parseInt(actualElement.innerHTML, 10);
-            if(action === "-"){
-                if(stock === 0){
-                    alert("Seuil atteint nous ne pouvons descendre en dessous de 0! Message temporaire, à modifier!");
-                    //TODO CREER UNE ERREUR PERMETTANT D'AVERTIR L'UTILISATEUR QUE LE SEUIL A ETE ATTEINT
-                }
-                else{
-                    stock --;
-                }
-            }
-            else{
-                stock++;
-            }
-
-            actualElement.innerHTML = stock.toString();
-            score();
-        }
     </script>
 
 <?php
