@@ -35,7 +35,13 @@ function filterElements(filterType, filter) {
         }
         // Filter for type of consumable
         else if(filterType === "type") {
-
+            let type = card.querySelectorAll("[name=consumableType]");
+            if(type[0].innerHTML.includes(filter)){
+                card.hidden = false;
+            }
+            else{
+                card.hidden = true;
+            }
         }
     });
 }

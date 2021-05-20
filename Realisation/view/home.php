@@ -55,12 +55,12 @@ ob_start();
                     <div class="w-100 d-flex flex-wrap">
                         <div class="w-50 p-2 flex-column">
                             <?php $i=0; foreach ($types as $type) : if($i%2 != 1) : ?>
-                                <button class="btn btn-primary w-100 mb-3"><?= $type['name']; ?></button>
+                                <button class="btn btn-primary w-100 mb-3" onclick="filterElements('type', '<?= $type['name']; ?>')"><?= $type['name']; ?></button>
                             <?php endif; $i++; endforeach; ?>
                         </div>
                         <div class="w-50 p-2 flex-column">
                             <?php $i=0; foreach ($types as $type) :  if($i%2 == 1) : ?>
-                            <button class="btn btn-primary w-100 mb-3"><?= $type['name']; ?></button>
+                            <button class="btn btn-primary w-100 mb-3" onclick="filterElements('type', '<?= $type['name']; ?>')"><?= $type['name']; ?></button>
                             <?php endif; $i++; endforeach; ?>
                         </div>
                     </div>
