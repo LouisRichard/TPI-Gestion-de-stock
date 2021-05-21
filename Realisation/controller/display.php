@@ -85,6 +85,11 @@ function displayNewUser(){
  */
 function displayNewConsumable(){
     if(isset($_SESSION['username']) && $_SESSION['username'] != ''){
+        require_once 'model/displayRequestManager.php';
+
+        $consumableTypes = getConsumableTypes();
+        $products = getProducts();
+
         require 'view/newConsumable.php';
     }
     else{

@@ -78,7 +78,7 @@ function getBrands(){
  * @return array
  */
 function getConsumableTypes(){
-    $query = "SELECT name FROM consumable_types";
+    $query = "SELECT IDConsumableTypes, name FROM consumable_types";
 
     return executeQuery($query);
 }
@@ -88,7 +88,7 @@ function getConsumableTypes(){
  * @return array
  */
 function getProducts(){
-    $query = "SELECT products.name, brands.name AS brand, product_types.name AS type FROM `products`
+    $query = "SELECT products.IDProducts, products.name, brands.name AS brand, product_types.name AS type FROM `products`
         INNER JOIN product_types ON products.FKProductTypes = product_types.IDProductTypes
         INNER JOIN brands ON products.FKBrand = brands.IDBrands";
 
