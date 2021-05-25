@@ -95,3 +95,10 @@ function getProducts(){
     return executeQuery($query);
 }
 
+
+function getUsersInformation(){
+    $query = "SELECT `IDUsers`, `firstname`, `lastname`, `email`, `adminStatus`, `status` FROM `users`";
+
+    return executeQuery($query);
+}
+
