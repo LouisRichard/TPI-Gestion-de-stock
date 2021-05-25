@@ -51,7 +51,7 @@ function displayAdminPanel(){
     if(isset($_SESSION['username']) && $_SESSION['username'] != ''){
         if($_SESSION['status'] == 1){
             $_SESSION['adminPanel'] = 'adminPanel';
-            
+
             require_once 'model/displayRequestManager.php';
             $users = getUsersInformation();
 

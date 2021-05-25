@@ -13,7 +13,7 @@ ob_start();
         <button class="btn btn-success float-right">Ajouter un nouvel utilisateur</button>
     </div>
 
-    <form action="?=saveAdminModification" method="post">
+    <form action="?=saveAdminModification" method="post" id="form">
         <table class="table table-bordered table-striped table-hover mt-5">
             <thead>
                 <tr>
@@ -27,11 +27,12 @@ ob_start();
             <tbody>
                 <?php foreach($users as $user) : ?>
                     <tr class="text-center">
-                        <td><?= $user['lastname'] ?></td>
-                        <td><?= $user['firstname'] ?></td>
-                        <td><?= $user['email'] ?></td>
-                        <td><input type="checkbox" class="form-check-input" <?php if($user['adminStatus']){ echo "checked"; } ?>></td>
-                        <td><button class="btn <?php if($user['status']){ echo 'btn-warning">Désactiver'; }else{ echo 'btn-danger">Supprimer'; } ?></button></td>
+                        <input type="hidden" hidden name="userID" id="userID" value="<?= $user['IDUsers']; ?>">
+                        <td><?= $user['lastname']; ?></td>
+                        <td><?= $user['firstname']; ?></td>
+                        <td><?= $user['email']; ?></td>
+                        <td><input type="checkbox" name="adminStatus<?= $user['IDUsers']; ?>" id="adminStatus<?= $user['IDUsers']; ?>" class="form-check-input" <?php if($user['adminStatus']){ echo "checked"; } ?>></td>
+                        <td><button onclick="changeUserStatus('<?= $user['IDUsers']; ?>')" id="status<?= $user['IDUsers']; ?>" class="btn <?php if($user['status']){ echo 'btn-warning">Désactiver'; }else{ echo 'btn-danger">Supprimer'; } ?></button></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
