@@ -153,9 +153,9 @@ ob_start();
                 <div class="card">
                     <div class="card-header text-center" >
                         <div class="d-flex flex-row" style="justify-content: center">
-                            <div class="align-self-center"><i class="fas fa-plus" type="button" onclick="manageStock('<?= $consumable['IDConsumables']; ?>', '+')"></i></div>
+                            <div class="align-self-center"><i class="fas fa-minus" type="button" onclick="manageStock('<?= $consumable['IDConsumables']; ?>', '-')"></i></div>
                             <div class="align-self-center ml-4"><div class="rating" id="<?= $consumable['IDConsumables']; ?>"><?= $consumable['stock']; ?></div></div>
-                            <div class="align-self-center ml-4"><i class="fas fa-minus" type="button" onclick="manageStock('<?= $consumable['IDConsumables']; ?>', '-')"></i></div>
+                            <div class="align-self-center ml-4"><i class="fas fa-plus" type="button" onclick="manageStock('<?= $consumable['IDConsumables']; ?>', '+')"></i></div>
                         </div>
                     </div>
                     <div class="card-body">
@@ -174,7 +174,7 @@ ob_start();
                         </div>
                         </p>
                         <div class="text-center">
-                            <btn class="btn btn-primary" onclick="sendData({id:'<?= $consumable['IDConsumables'] ?>',stock:parseInt(document.getElementById(<?= $consumable['IDConsumables']; ?>).getElementsByTagName('span')[0].innerHTML,10)})">Sauvegarder</btn>
+                            <btn class="btn btn-primary" onclick="sendData({id:'<?= $consumable['IDConsumables'] ?>',emailUser:'<?= $_SESSION['email']?>',stock:parseInt(document.getElementById(<?= $consumable['IDConsumables']; ?>).getElementsByTagName('span')[0].innerHTML,10)})">Sauvegarder</btn>
                         </div>
                     </div>
                 </div>
@@ -189,9 +189,9 @@ ob_start();
             <div class="card">
                 <div class="card-header text-center" >
                     <div class="d-flex flex-row" style="justify-content: center">
-                        <div class="align-self-center"><i class="fas fa-plus" type="button" onclick="manageStock('<?= $consumable['IDConsumables']; ?>', '+')"></i></div>
+                        <div class="align-self-center"><i class="fas fa-minus" type="button" onclick="manageStock('<?= $consumable['IDConsumables']; ?>', '-')"></i></div>
                         <div class="align-self-center ml-4"><div class="rating" id="<?= $consumable['IDConsumables']; ?>"><?= $consumable['stock']; ?></div></div>
-                        <div class="align-self-center ml-4"><i class="fas fa-minus" type="button" onclick="manageStock('<?= $consumable['IDConsumables']; ?>', '-')"></i></div>
+                        <div class="align-self-center ml-4"><i class="fas fa-plus" type="button" onclick="manageStock('<?= $consumable['IDConsumables']; ?>', '+')"></i></div>
                     </div>
                 </div>
                 <div class="card-body">
@@ -214,7 +214,7 @@ ob_start();
                     </div>
                     </p>
                     <div class="text-center">
-                        <btn class="btn btn-primary" onclick="sendData({id:'<?= $consumable['IDConsumables'] ?>',stock:parseInt(document.getElementById(<?= $consumable['IDConsumables']; ?>).getElementsByTagName('span')[0].innerHTML,10)})">Sauvegarder</btn>
+                        <btn class="btn btn-primary" onclick="sendData({id:'<?= $consumable['IDConsumables'] ?>',emailUser:'<?= $_SESSION['email']?>',stock:parseInt(document.getElementById(<?= $consumable['IDConsumables']; ?>).getElementsByTagName('span')[0].innerHTML,10)})">Sauvegarder</btn>
                     </div>
                 </div>
             </div>

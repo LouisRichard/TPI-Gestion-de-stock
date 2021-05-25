@@ -107,7 +107,7 @@ function sendData(data) {
     });
 
     // Configure the request
-    XHR.open('POST', 'https://devtpi.pedroletti.ch/model/dynamicSendTest.php');
+    XHR.open('POST', 'https://tpi.pedroletti.ch/model/dynamicSendTest.php');
 
     // Send object FormData
     XHR.send(FD);
