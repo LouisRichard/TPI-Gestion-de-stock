@@ -54,9 +54,6 @@
                                     <a class="nav-link" href="?action=adminPanel">
                                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                         Panneau administrateur
-                                        <?php if(isset($_SESSION['adminPanel']) && $_SESSION['adminPanel'] == 'adminPanel') : ?>
-                                            <a class="nav-link ml-4" href="?action=newUser"><div class="sb-nav-link-icon"><i class="fas fa-plus"></i></div>Nouvel utilisateur</a>
-                                        <?php unset($_SESSION['adminPanel']); endif; ?>
                                     </a>
                                 <?php endif; ?>
                             </div>

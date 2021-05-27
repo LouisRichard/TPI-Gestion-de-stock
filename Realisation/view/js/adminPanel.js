@@ -8,18 +8,48 @@
 /**
  * This function call php function to change a user status with all needed information.
  * @param idUser = id of the user that we need to modify
+ * @param reactivation = if we need to reactive a user
  */
-function changeUserStatus(idUser){
+function changeUserStatus(idUser, reactivation = false){
     let adminStatusField = document.getElementById("status"+idUser);
+    const XHR = new XMLHttpRequest();
+    const FD = new FormData();
 
-    if(adminStatusField.innerHTML === "Désactiver"){
-        //TODO appeler la fonction de désactivation de l'utilisateur de manière dynamique
+    // Load array with needed value
+    if(reactivation === true){
+        var data = {id:idUser, status:'reactivation'}
+    }
+    else if(adminStatusField.innerHTML === "Désactiver"){
+        var data = {id:idUser, status:'suspend'};
     }
     else{
-        //TODO appeler la fonction de suppression de l'utilisateur de manière dynamique
+        var data = {id:idUser, status:'delete'};
     }
 
-    //TODO gérer par la suite les erreurs des différentes action effectuées
+    // Put data in object FormData
+    for(name in data) {
+        FD.append(name, data[name]);
+    }
+
+    // Define text and call modal if the operation is a success
+    XHR.addEventListener('load', function(event) {
+        alert("La sauvegarde des données a été un succès !");
+    });
+
+    // Define text and call modal if the operation is a mess
+    XHR.addEventListener('error', function(event) {
+        alert("Une erreur inconnue est survenue ! Veuilez réessayer plus tard !");
+    });
+
+    // Configure the request
+    XHR.open('POST', 'https://tpi.pedroletti.ch/model/changeUsersStatus.php');
+
+    // Send object FormData
+    XHR.send(FD);
+
+    // Reload the page
+    location.reload();
+    //TODO We need to change this and just reload display not the page
 }
 
 /**

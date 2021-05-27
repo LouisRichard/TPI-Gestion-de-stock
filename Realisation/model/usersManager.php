@@ -109,18 +109,6 @@ function userAlreadyExist($userEmail){
     return $result;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 /**
  * This function is used to know if the userLogin exist in an AD and if the password of the user is correct.
  * If this two parameters are correct, the function give back basics information about the user (mail, first and last name)

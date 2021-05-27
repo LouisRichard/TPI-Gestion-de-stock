@@ -7,10 +7,13 @@
 
 ob_start();
 ?>
+<head>
+    <script rel="javascript" src="view/js/adminPanel.js"></script>
+</head>
 
 <div class="m-3 border border-dark pl-3 pr-3">
-    <div class="w-100 m-3 p-2">
-        <button class="btn btn-success float-right">Ajouter un nouvel utilisateur</button>
+    <div class="w-100 m-2 p-2">
+        <a href="?action=newUser" class="btn btn-success float-right">Ajouter un nouvel utilisateur</a>
     </div>
 
     <form action="?=saveAdminModification" method="post" id="form">
@@ -20,8 +23,8 @@ ob_start();
                     <th scope="col">Nom</th>
                     <th scope="col">Prénom</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Statut</th>
                     <th scope="col">Admin</th>
+                    <th scope="col">Statut</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,7 +35,14 @@ ob_start();
                         <td><?= $user['firstname']; ?></td>
                         <td><?= $user['email']; ?></td>
                         <td><input type="checkbox" name="adminStatus<?= $user['IDUsers']; ?>" id="adminStatus<?= $user['IDUsers']; ?>" class="form-check-input" <?php if($user['adminStatus']){ echo "checked"; } ?>></td>
-                        <td><button onclick="changeUserStatus('<?= $user['IDUsers']; ?>')" id="status<?= $user['IDUsers']; ?>" class="btn <?php if($user['status']){ echo 'btn-warning">Désactiver'; }else{ echo 'btn-danger">Supprimer'; } ?></button></td>
+                        <td>
+                            <?php if($user['status']) : ?>
+                                <a onclick="changeUserStatus('<?= $user['IDUsers']; ?>')" id="status<?= $user['IDUsers']; ?>" class="btn btn-warning">Désactiver</a>
+                            <?php else : ?>
+                                <a onclick="changeUserStatus('<?= $user['IDUsers']; ?>', true)" id="reaStatus<?= $user['IDUsers']; ?>" class="btn btn-primary">Réactiver</a>
+                                <a onclick="changeUserStatus('<?= $user['IDUsers']; ?>')" id="status<?= $user['IDUsers']; ?>" class="btn btn-danger">Supprimer</a>
+                            <?php endif; ?>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
