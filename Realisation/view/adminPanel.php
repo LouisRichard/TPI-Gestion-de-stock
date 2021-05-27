@@ -11,12 +11,36 @@ ob_start();
     <script rel="javascript" src="view/js/adminPanel.js"></script>
 </head>
 
+<div class="modal fade" id="newUserModal" tabindex="-1" role="dialog"
+     aria-labelledby="newUserModal" aria-hidden="true">
+    <div class="modal-dialog modal-xl m-auto" role="document" style="top: 45%;">
+        <div class="modal-content w-100">
+            <div class="modal-body">
+                <div class="w-100 mb-2">
+                    <h6 class="text-center pt-2">
+                        Ajout de nouvel utilisateur
+                    </h6>
+                </div>
+                <div class="w-100 m-1 p-2">
+                    <input class="form-check-input" name="firstname" type="text" maxlength="55" required placeholder="John">
+                    <input class="form-check-input" name="lastname" type="text" maxlength="60" required placeholder="Doe">
+                    <input class="form-check-input" name="email" type="email" maxlength="256" required placeholder="john.doe@gmail.com">
+                    <input class="form-check-input" name="pwd" type="password" maxlength="256" required placeholder="Mot de passe">
+                    <input class="form-check-input" name="admin" type="checkbox">
+                    <a onclick="createNewUser()" type="submit" class="btn-primary">Ajouter le nouvel utilisateur</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div class="m-3 border border-dark pl-3 pr-3">
     <div class="w-100 m-2 p-2">
         <a href="?action=newUser" class="btn btn-success float-right">Ajouter un nouvel utilisateur</a>
     </div>
 
-    <form action="?=saveAdminModification" method="post" id="form">
+    <form action="?action=saveAdminModification" method="post" id="form">
         <table class="table table-bordered table-striped table-hover mt-5">
             <thead>
                 <tr>

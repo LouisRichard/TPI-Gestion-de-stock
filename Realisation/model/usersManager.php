@@ -110,6 +110,35 @@ function userAlreadyExist($userEmail){
 }
 
 /**
+ * Function used to set a user as a default user or an admin
+ * @param $id = id of the user
+ * @param $action = to know if we need to set admin or default user
+ */
+function setStatusUserAdmin($id, $action = false){
+    $query = "";
+
+    if(!$action){
+        $query = "UPDATE `users` SET `adminStatus`=0 WHERE users.IDUsers=".$id;
+    }
+    else{
+        $query = "UPDATE `users` SET `adminStatus`=1 WHERE users.IDUsers=".$id;
+    }
+
+    echo $query;
+    executeQuery($query);
+}
+
+/**
+ * Get all id of all users in the DB
+ * @return array = array with ID of the users
+ */
+function getUsersID(){
+    $query = "SELECT `IDUsers` FROM `users`";
+
+    return executeQuery($query);
+}
+
+/**
  * This function is used to know if the userLogin exist in an AD and if the password of the user is correct.
  * If this two parameters are correct, the function give back basics information about the user (mail, first and last name)
  * @param $userLogin - login of the user

@@ -85,25 +85,21 @@ function newUser($post){
 }
 
 /**
- * Function used to disable user
- * @param $post - contain information about user that we need to disable
- */
-function disableUser($post){
-
-}
-
-/**
- * Function used to delete user
- * @param $post - contain information about user that we need to delete
- */
-function deleteUser($post){
-
-}
-
-/**
  * @param $post - contain all information that we need to save,
  * after that an admin modify status, on admin panel
  */
 function saveAdminModification($post){
+    require_once 'model/usersManager.php';
+    $users = getUsersID();
 
+    foreach($users as $user){
+        if(isset($post['adminStatus'.$user['IDUsers']])){
+            setStatusUserAdmin($user['IDUsers'], true);
+        }
+        else{
+            setStatusUserAdmin($user['IDUsers']);
+        }
+    }
+
+    displayAdminPanel();
 }

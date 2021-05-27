@@ -51,10 +51,3 @@ function changeUserStatus(idUser, reactivation = false){
     location.reload();
     //TODO We need to change this and just reload display not the page
 }
-
-/**
- * This function will prepare needed information to make the easiest way possible to modify data in php for next step
- */
-function prepareInformationForUsersStatusModification(){
-
-}

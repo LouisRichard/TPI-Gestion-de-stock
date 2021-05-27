@@ -70,16 +70,6 @@ if(isset($_GET['action'])){
             newUser($_POST);
             break;
 
-        /**== Action to disable user ==**/
-        case 'disableUser':
-            disableUser($_POST);
-            break;
-
-        /**== Action to disable user ==**/
-        case 'deleteUser':
-            deleteUser($_POST);
-            break;
-
         /**== Action to save modification that an admin make on admin panel ==**/
         case 'saveAdminModification':
             saveAdminModification($_POST);
