@@ -68,7 +68,7 @@ function getAllConsumables(){
  * @return array
  */
 function getBrands(){
-    $query = "SELECT name FROM brands";
+    $query = "SELECT IDBrands, name FROM brands";
 
     return executeQuery($query);
 }

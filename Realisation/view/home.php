@@ -26,7 +26,16 @@ ob_start();
                             <?php if ($_SESSION['msg'] == "loginSuccess") {
                                 echo '<p>Succès de la connexion !</p>';
                                 echo '<button type="submit" class="btn btn-success float-right btn-close-phone" data-bs-dismiss="modal">Fermer</button>';
-                            } ?>
+                            }
+                            elseif($_SESSION['msg'] == "successAddNewConsumable"){
+                                echo '<p>Succès lors de l\'ajout du nouveau consommable !</p>';
+                                echo '<button type="submit" class="btn btn-success float-right btn-close-phone" data-bs-dismiss="modal">Fermer</button>';
+                            }
+                            elseif($_SESSION['msg'] == "failAddNewConsumable"){
+                                echo '<p>Échec lors de l\'ajout du nouveau consommable ! Réessayer plus tard !</p>';
+                                echo '<button type="submit" class="btn btn-danger float-right btn-close-phone" data-bs-dismiss="modal">Fermer</button>';
+                            }
+                            ?>
                         </h6>
                     </div>
                 </div>

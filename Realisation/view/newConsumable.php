@@ -33,6 +33,14 @@ ob_start();
                 </div>
             </div>
             <div class="flex-column p-5 w-50">
+                <div class="mb-3 w-100">
+                    <label for="consumableBrand" class="form-label">Marque du consommable :</label>
+                    <select class="form-select mb-3" id="consumableBrand" name="consumableBrand" aria-label="consumableBrand">
+                        <?php if(isset($brands)) : foreach($brands as $brand) : ?>
+                            <option value="<?= $brand['IDBrands']; ?>"><?= $brand['name']; ?></option>
+                        <?php endforeach; endif; ?>
+                    </select>
+                </div>
                 <div class="mb-2 w-100">
                     <label class="form-label">Produit(s) lié(s) :</label>
                 </div>

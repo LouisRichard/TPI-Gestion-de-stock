@@ -9,6 +9,7 @@
 session_start();
 
 //Require all controller's files
+require_once 'controller/consumables.php';
 require_once 'controller/display.php';
 require_once 'controller/users.php';
 
@@ -57,6 +58,10 @@ if(isset($_GET['action'])){
         /**== Action to save modification that an admin make on admin panel ==**/
         case 'saveAdminModification':
             saveAdminModification($_POST);
+            break;
+
+        case 'requestNewConsumable':
+            newConsumable($_POST);
             break;
 
         /**== Action to display home ==**/

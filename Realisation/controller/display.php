@@ -93,6 +93,7 @@ function displayNewConsumable(){
 
         $consumableTypes = getConsumableTypes();
         $products = getProducts();
+        $brands = getBrands();
 
         require 'view/newConsumable.php';
     }
