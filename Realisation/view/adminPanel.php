@@ -7,13 +7,10 @@
 
 ob_start();
 ?>
-<head>
-    <script rel="javascript" src="view/js/adminPanel.js"></script>
-</head>
 
 <div class="modal fade" id="newUserModal" tabindex="-1" role="dialog"
      aria-labelledby="newUserModal" aria-hidden="true">
-    <div class="modal-dialog modal-xl m-auto" role="document" style="top: 45%;">
+    <div class="modal-dialog modal-xl m-auto" role="document" style="top: 20%;">
         <div class="modal-content w-100">
             <div class="modal-body">
                 <div class="w-100 mb-2">
@@ -22,12 +19,26 @@ ob_start();
                     </h6>
                 </div>
                 <div class="w-100 m-1 p-2">
-                    <input class="form-check-input" name="firstname" type="text" maxlength="55" required placeholder="John">
-                    <input class="form-check-input" name="lastname" type="text" maxlength="60" required placeholder="Doe">
-                    <input class="form-check-input" name="email" type="email" maxlength="256" required placeholder="john.doe@gmail.com">
-                    <input class="form-check-input" name="pwd" type="password" maxlength="256" required placeholder="Mot de passe">
-                    <input class="form-check-input" name="admin" type="checkbox">
-                    <a onclick="createNewUser()" type="submit" class="btn-primary">Ajouter le nouvel utilisateur</a>
+                    <div class="d-flex flex-wrap border-top border-dark mt-2">
+                        <div class="flex-column p-5 border-right border-dark w-50">
+                            <label for="firstname" class="form-label">Prénom :</label>
+                            <input class="form-control mb-2" id="firstname" name="firstname" type="text" maxlength="55" required placeholder="John">
+                            <label for="lastname" class="form-label">Nom :</label>
+                            <input class="form-control mb-2" id="lastname" name="lastname" type="text" maxlength="60" required placeholder="Doe">
+                            <label for="email" class="form-label">E-mail :</label>
+                            <input class="form-control mb-2" id="email" name="email" type="email" maxlength="256" required placeholder="john.doe@gmail.com">
+                        </div>
+                        <div class="flex-column p-5 w-50">
+                            <label for="pwd" class="form-label">Mot de passe :</label>
+                            <input class="form-control mb-2" id="pwd" name="pwd" type="password" maxlength="256" required placeholder="Mot de passe">
+
+                            <input class="form-check-input ml-0" id="admin" name="admin" type="checkbox">
+                            <label for="admin" class="form-check-label ml-4">Administrateur</label>
+                        </div>
+                    </div>
+                    <div class="text-center w-100 mt-2">
+                        <a onclick="createNewUser()" type="submit" class="btn btn-primary">Ajouter le nouvel utilisateur</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -37,7 +48,7 @@ ob_start();
 
 <div class="m-3 border border-dark pl-3 pr-3">
     <div class="w-100 m-2 p-2">
-        <a href="?action=newUser" class="btn btn-success float-right">Ajouter un nouvel utilisateur</a>
+        <a data-bs-toggle="modal" data-bs-target="#newUserModal" class="btn btn-success float-right">Ajouter un nouvel utilisateur</a>
     </div>
 
     <form action="?action=saveAdminModification" method="post" id="form">
@@ -76,6 +87,9 @@ ob_start();
         </div>
     </form>
 </div>
+
+
+<script rel="javascript" src="view/js/adminPanel.js"></script>
 <?php
 
 $content = ob_get_clean();

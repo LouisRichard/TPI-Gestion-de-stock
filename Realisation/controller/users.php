@@ -54,37 +54,6 @@ function logOut()
 }
 
 /**
- * Function used to add new user
- * @param $post - contain all information about the new user
- */
-function newUser($post){
-    $lastname = $post['lastname'];
-    $firstname = $post['firstname'];
-    $email = $post['email'];
-    $pwd = $post['pwd'];
-    $admin = 0;
-    if(isset($post['admin'])){
-        $admin = 1;
-    }
-
-    require_once 'model/usersManager.php';
-    if(!userAlreadyExist($email)){
-        if(addUser($lastname, $firstname, $email, $pwd, $admin)){
-            $_SESSION['newUsername'] = $lastname . " " . $firstname;
-            $_SESSION['msg'] = 'newUserSuccess';
-        }
-        else{
-            $_SESSION['msg'] = 'newUserFailed';
-        }
-    }
-    else{
-        $_SESSION['msg'] = 'newUserAlreadyExist';
-    }
-
-    displayNewUser();
-}
-
-/**
  * @param $post - contain all information that we need to save,
  * after that an admin modify status, on admin panel
  */

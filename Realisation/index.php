@@ -9,7 +9,6 @@
 session_start();
 
 //Require all controller's files
-require_once 'controller/consumables.php';
 require_once 'controller/display.php';
 require_once 'controller/users.php';
 
@@ -45,16 +44,6 @@ if(isset($_GET['action'])){
             displayNewConsumable();
             break;
 
-        /**== Action to add new consumable ==**/
-        case 'requestNewConsumable':
-            newConsumable($_POST);
-            break;
-
-        /**== Function used to modify quantity of an consumable ==**/
-        case 'modifyQuantity':
-            modifyQuantity($_POST['idConsumable'], $_POST['newQuantity']);
-            break;
-
         /**== Action to display the admin panel ==**/
         case 'adminPanel':
             displayAdminPanel();
@@ -63,11 +52,6 @@ if(isset($_GET['action'])){
         /**== Action to display page for creation of new user ==**/
         case 'newUser':
             displayNewUser();
-            break;
-
-        /**== Action to add new user ==**/
-        case 'requestNewUser':
-            newUser($_POST);
             break;
 
         /**== Action to save modification that an admin make on admin panel ==**/

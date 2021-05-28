@@ -33,7 +33,7 @@ function changeUserStatus(idUser, reactivation = false){
 
     // Define text and call modal if the operation is a success
     XHR.addEventListener('load', function(event) {
-        alert("La sauvegarde des données a été un succès !");
+        alert("La modification du statut, c'est correctement effectué !");
     });
 
     // Define text and call modal if the operation is a mess
@@ -43,6 +43,58 @@ function changeUserStatus(idUser, reactivation = false){
 
     // Configure the request
     XHR.open('POST', 'https://tpi.pedroletti.ch/model/changeUsersStatus.php');
+
+    // Send object FormData
+    XHR.send(FD);
+
+    // Reload the page
+    location.reload();
+    //TODO We need to change this and just reload display not the page
+}
+
+
+function createNewUser(){
+    const XHR = new XMLHttpRequest();
+    const FD = new FormData();
+    let firstname = document.getElementById("firstname").value;
+    let lastname = document.getElementById("lastname").value;
+    let email = document.getElementById("email").value;
+    let pwd = document.getElementById("pwd").value;
+    let adminStatus = document.getElementById("admin").checked;
+    var data = null;
+
+    if(firstname !== "" && firstname !== " "){
+        if(lastname !== "" && firstname !== " "){
+            if(email !== "" && email !== " "){
+                if(pwd !== "" && pwd !== " "){
+                    if(adminStatus === "on"){
+                        data = {fName:firstname,lName:lastname,email:email,pwd:pwd,admin:true};
+                    }
+                    else{
+                        data = {fName:firstname,lName:lastname,email:email,pwd:pwd,admin:false};
+                    }
+                }
+            }
+        }
+    }
+
+    // Put data in object FormData
+    for(name in data) {
+        FD.append(name, data[name]);
+    }
+
+    // Define text and call modal if the operation is a success
+    XHR.addEventListener('load', function(event) {
+        alert("La sauvegarde des données a été un succès !");
+    });
+
+    // Define text and call modal if the operation is a mess
+    XHR.addEventListener('error', function(event) {
+        alert("Une erreur inconnue est survenue ! Veuilez réessayer plus tard !");
+    });
+
+    // Configure the request
+    XHR.open('POST', 'https://tpi.pedroletti.ch/model/addNewUser.php');
 
     // Send object FormData
     XHR.send(FD);
