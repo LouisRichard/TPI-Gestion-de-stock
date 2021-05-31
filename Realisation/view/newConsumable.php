@@ -7,6 +7,9 @@
 
 ob_start();
 ?>
+<head>
+    <title>Nouveau consommable</title>
+</head>
 
 <div class="m-3 border border-dark pl-3 pr-3">
     <form method="post" action="?action=requestNewConsumable">
@@ -55,11 +58,12 @@ ob_start();
             </div>
         </div>
         <div class="w-100 text-center">
-            <button type="submit" class="btn btn-success w-25 p-2 m-3">Ajouter le nouveau consommable</button>
+            <button type="submit" onclick="verifyForm()" class="btn btn-success w-25 p-2 m-3">Ajouter le nouveau consommable</button>
         </div>
     </form>
 </div>
 
+<script rel="javascript" src="view/js/newConsumable.js"></script>
 <?php
 $content = ob_get_clean();
 require "template.php";

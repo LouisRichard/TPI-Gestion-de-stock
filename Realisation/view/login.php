@@ -15,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="Gestionnaire de stock - TPI 2021" />
     <meta name="author" content="Pedroletti Michael" />
-    <title>Login</title>
+    <title>Connexion</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <link href="view/style/styles.css" rel="stylesheet" />
 </head>

@@ -7,6 +7,9 @@
 
 ob_start();
 ?>
+<head>
+    <title>Panneau administrateur</title>
+</head>
 
 <div class="modal fade" id="newUserModal" tabindex="-1" role="dialog"
      aria-labelledby="newUserModal" aria-hidden="true">
