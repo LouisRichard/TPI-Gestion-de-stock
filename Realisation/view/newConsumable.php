@@ -9,7 +9,39 @@ ob_start();
 ?>
 <head>
     <title>Nouveau consommable</title>
+    <script rel="javascript" src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script rel="javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script rel="javascript" src="view/js/home.js"></script>
+    <script rel="javascript" src="view/js/filter.js"></script>
 </head>
+
+    <!-- Modal notification -->
+    <?php if (isset($_SESSION['msg'])) : ?>
+        <div class="modal fade" id="messages" tabindex="-1" role="dialog"
+             aria-labelledby="messages" aria-hidden="true">
+            <div class="modal-dialog m-auto w-470-px" role="document" style="top: 45%;">
+                <div class="modal-content w-100">
+                    <div class="modal-body">
+                        <div class="w-100">
+                            <h6 class="text-center pt-2">
+                                <?php if ($_SESSION['msg'] == "missingValueNewConsumable") {
+                                    echo '<p>Vous avez oublié d\'entrer un nom valide et/ou oublier de sélectionner un produit lié!</p>';
+                                    echo '<button type="submit" class="btn btn-danger float-right btn-close-phone" data-bs-dismiss="modal">Fermer</button>';
+                                }
+                                ?>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            var messages = new bootstrap.Modal(document.getElementById('messages'), {
+                keyboard: false
+            })
+            messages.show();
+        </script>
+    <?php unset($_SESSION['msg']); endif; ?>
 
 <div class="m-3 border border-dark pl-3 pr-3">
     <form method="post" action="?action=requestNewConsumable">
@@ -58,12 +90,11 @@ ob_start();
             </div>
         </div>
         <div class="w-100 text-center">
-            <button type="submit" onclick="verifyForm()" class="btn btn-success w-25 p-2 m-3">Ajouter le nouveau consommable</button>
+            <button type="submit" class="btn btn-success w-25 p-2 m-3">Ajouter le nouveau consommable</button>
         </div>
     </form>
 </div>
 
-<script rel="javascript" src="view/js/newConsumable.js"></script>
 <?php
 $content = ob_get_clean();
 require "template.php";
