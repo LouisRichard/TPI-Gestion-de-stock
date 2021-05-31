@@ -70,7 +70,6 @@ function setStatusUserAdmin($id, $action = false){
         $query = "UPDATE `users` SET `adminStatus`=1 WHERE users.IDUsers=".$id;
     }
 
-    echo $query;
     executeQuery($query);
 }
 

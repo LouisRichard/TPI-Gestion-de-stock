@@ -67,11 +67,11 @@ function createNewUser(){
         if(lastname !== "" && firstname !== " "){
             if(email !== "" && email !== " "){
                 if(pwd !== "" && pwd !== " "){
-                    if(adminStatus === "on"){
-                        data = {fName:firstname,lName:lastname,email:email,pwd:pwd,admin:true};
+                    if(adminStatus){
+                        data = {fName:firstname,lName:lastname,email:email,pwd:pwd,admin:1};
                     }
                     else{
-                        data = {fName:firstname,lName:lastname,email:email,pwd:pwd,admin:false};
+                        data = {fName:firstname,lName:lastname,email:email,pwd:pwd,admin:0};
                     }
                 }
             }
