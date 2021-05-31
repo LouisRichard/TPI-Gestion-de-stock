@@ -39,12 +39,24 @@
                                 <a class="nav-link" href="?action=home">
                                     <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
                                     Accueil
-                                    <?php if(isset($_SESSION['home']) && $_SESSION['home'] == 'home') : ?>
-                                        <a class="nav-link ml-4" type="button" data-bs-toggle="modal" data-bs-target="#typeFilterModal"><div class="sb-nav-link-icon"><i class="fas fa-filter"></i></div>Types de consommables</a>
-                                        <a class="nav-link ml-4" type="button" data-bs-toggle="modal" data-bs-target="#brandFilterModal"><div class="sb-nav-link-icon"><i class="fas fa-filter"></i></div>Marques</a>
-                                        <a class="nav-link ml-4" type="button" data-bs-toggle="modal" data-bs-target="#linkedProductFilterModal"><div class="sb-nav-link-icon"><i class="fas fa-filter"></i></div>Produits liés</a>
-                                    <?php unset($_SESSION['home']); endif; ?>
                                 </a>
+                                <?php if(isset($_SESSION['home']) && $_SESSION['home'] == 'home') : ?>
+                                    <a class="nav-link ml-4" data-bs-toggle="modal" data-bs-target="#typeFilterModal">
+                                        <div class="sb-nav-link-icon">
+                                            <i class="fas fa-filter"></i>
+                                        </div>Types de consommables
+                                    </a>
+                                    <a class="nav-link ml-4" data-bs-toggle="modal" data-bs-target="#brandFilterModal">
+                                        <div class="sb-nav-link-icon">
+                                            <i class="fas fa-filter"></i>
+                                        </div>Marques
+                                    </a>
+                                    <a class="nav-link ml-4" data-bs-toggle="modal" data-bs-target="#linkedProductFilterModal">
+                                        <div class="sb-nav-link-icon">
+                                            <i class="fas fa-filter"></i>
+                                        </div>Produits liés
+                                    </a>
+                                <?php unset($_SESSION['home']); endif; ?>
                                 <a class="nav-link" href="?action=newConsumable">
                                     <div class="sb-nav-link-icon"><i class="fas fa-plus"></i></div>
                                     Nouveau consommable

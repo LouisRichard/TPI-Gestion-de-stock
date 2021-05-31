@@ -153,8 +153,6 @@ ob_start();
         </div>
     </div>
 
-
-
     <?php if(isset($dangerConsumables) && $dangerConsumables != null) : ?>
         <h1 class="mb-1">Attention quantités faibles</h1>
         <div class="card-deck mb-3" id="lowQuantityConsumable" style="flex-wrap: wrap; justify-content: space-evenly">
@@ -162,9 +160,9 @@ ob_start();
                 <div class="card">
                     <div class="card-header text-center" >
                         <div class="d-flex flex-row" style="justify-content: center">
-                            <div class="align-self-center"><i class="fas fa-minus" type="button" onclick="manageStock('<?= $consumable['IDConsumables']; ?>', '-')"></i></div>
+                            <div class="align-self-center" type="button"><i class="fas fa-minus" onclick="manageStock('<?= $consumable['IDConsumables']; ?>', '-')"></i></div>
                             <div class="align-self-center ml-4"><div class="rating" id="<?= $consumable['IDConsumables']; ?>"><?= $consumable['stock']; ?></div></div>
-                            <div class="align-self-center ml-4"><i class="fas fa-plus" type="button" onclick="manageStock('<?= $consumable['IDConsumables']; ?>', '+')"></i></div>
+                            <div class="align-self-center ml-4" type="button"><i class="fas fa-plus" onclick="manageStock('<?= $consumable['IDConsumables']; ?>', '+')"></i></div>
                         </div>
                     </div>
                     <div class="card-body">
@@ -191,16 +189,15 @@ ob_start();
         </div>
     <?php endif; ?>
 
-
     <h1 class="mb-1">Consommables</h1>
     <div class="card-deck" id="consumable" style="flex-wrap: wrap; justify-content: space-evenly">
         <?php foreach($consumables as $consumable) : ?>
             <div class="card">
                 <div class="card-header text-center" >
                     <div class="d-flex flex-row" style="justify-content: center">
-                        <div class="align-self-center"><i class="fas fa-minus" type="button" onclick="manageStock('<?= $consumable['IDConsumables']; ?>', '-')"></i></div>
+                        <div class="align-self-center" type="button"><i class="fas fa-minus" onclick="manageStock('<?= $consumable['IDConsumables']; ?>', '-')"></i></div>
                         <div class="align-self-center ml-4"><div class="rating" id="<?= $consumable['IDConsumables']; ?>"><?= $consumable['stock']; ?></div></div>
-                        <div class="align-self-center ml-4"><i class="fas fa-plus" type="button" onclick="manageStock('<?= $consumable['IDConsumables']; ?>', '+')"></i></div>
+                        <div class="align-self-center ml-4" type="button"><i class="fas fa-plus" onclick="manageStock('<?= $consumable['IDConsumables']; ?>', '+')"></i></div>
                     </div>
                 </div>
                 <div class="card-body">
@@ -241,6 +238,8 @@ ob_start();
         const msgModificationStock = document.getElementById("modificationStockMessage");
         const btnModificationStock = document.getElementById("modificationStockBtn");
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
 
 <?php
 $content = ob_get_clean();
