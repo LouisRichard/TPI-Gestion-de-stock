@@ -59,7 +59,7 @@ ob_start();
                     <div class="w-100">
                         <h6 class="text-center pt-2">
                             <p id="modificationStockMessage"></p>
-                            <button type="submit" id="modificationStockBtn" class="btn float-right btn-close-phone" data-bs-dismiss="modal">Fermer</button>
+                            <button type="submit" id="modificationStockBtn" onclick="location.reload()" class="btn float-right btn-close-phone" data-bs-dismiss="modal">Fermer</button>
                         </h6>
                     </div>
                 </div>

@@ -14,6 +14,33 @@ ob_start();
 </head>
 
 <!-- MODAL Notification -->
+<?php if (isset($_SESSION['msg'])) : ?>
+    <div class="modal fade" id="messages" tabindex="-1" role="dialog"
+         aria-labelledby="messages" aria-hidden="true">
+        <div class="modal-dialog m-auto w-470-px" role="document" style="top: 45%;">
+            <div class="modal-content w-100">
+                <div class="modal-body">
+                    <div class="w-100">
+                        <h6 class="text-center pt-2">
+                            <?php if ($_SESSION['msg'] == "userAdminStatusModification") {
+                                echo '<p>Succès des modifications de droits administrateurs !</p>';
+                                echo '<button type="submit" class="btn btn-success float-right btn-close-phone" data-bs-dismiss="modal">Fermer</button>';
+                            }
+                            ?>
+                        </h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var messages = new bootstrap.Modal(document.getElementById('messages'), {
+            keyboard: false
+        })
+        messages.show();
+    </script>
+    <?php unset($_SESSION['msg']); endif; ?>
+
 <div class="modal fade" id="notificationModal" tabindex="-1" role="dialog"
      aria-labelledby="notificationModal" aria-hidden="true">
     <div class="modal-dialog m-auto w-470-px" role="document" style="top: 45%;">
@@ -59,7 +86,7 @@ ob_start();
                         </div>
                     </div>
                     <div class="text-center w-100 mt-2">
-                        <a onclick="createNewUser()" type="submit" class="btn btn-primary">Ajouter le nouvel utilisateur</a>
+                        <a onclick="createNewUser()" type="submit" class="btn btn-primary" data-bs-dismiss="modal">Ajouter le nouvel utilisateur</a>
                     </div>
                 </div>
             </div>

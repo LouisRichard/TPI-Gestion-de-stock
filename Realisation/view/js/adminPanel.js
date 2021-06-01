@@ -15,6 +15,7 @@ function changeUserStatus(idUser, reactivation = false){
     const XHR = new XMLHttpRequest();
     const FD = new FormData();
     let success = false;
+    let error = false;
 
     // Load array with needed value
     if(reactivation === true){
@@ -39,7 +40,7 @@ function changeUserStatus(idUser, reactivation = false){
 
     // Define text and call modal if the operation is a mess
     XHR.addEventListener('error', function(event) {
-        success = false;
+        error = true;
     });
 
     // Configure the request
@@ -49,14 +50,14 @@ function changeUserStatus(idUser, reactivation = false){
     XHR.send(FD);
 
 
-    if(success){
-        msgNotificationModal.innerHTML = "La modification du statut de l'utilisateur a été effectuée avec succès !";
-        btnNotificationModal.classList.add("btn-success");
+    if(!success && error){
+        msgNotificationModal.innerHTML = "Une erreur inconnue est survenue ! Veuillez réessayer !";
+        btnNotificationModal.classList.add("btn-danger");
         notificationModal.show();
     }
     else{
-        msgNotificationModal.innerHTML = "Une erreur inconnue est survenue ! Veuillez réessayer !";
-        btnNotificationModal.classList.add("btn-danger");
+        msgNotificationModal.innerHTML = "La modification du statut de l'utilisateur a été effectuée avec succès !";
+        btnNotificationModal.classList.add("btn-success");
         notificationModal.show();
     }
 }

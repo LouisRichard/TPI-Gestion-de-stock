@@ -70,5 +70,6 @@ function saveAdminModification($post){
         }
     }
 
+    $_SESSION['msg'] = "userAdminStatusModification";
     displayAdminPanel();
 }
