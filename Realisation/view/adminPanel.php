@@ -9,7 +9,26 @@ ob_start();
 ?>
 <head>
     <title>Panneau administrateur</title>
+    <script rel="javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script rel="javascript" src="view/js/adminPanel.js"></script>
 </head>
+
+<!-- MODAL Notification -->
+<div class="modal fade" id="notificationModal" tabindex="-1" role="dialog"
+     aria-labelledby="notificationModal" aria-hidden="true">
+    <div class="modal-dialog m-auto w-470-px" role="document" style="top: 45%;">
+        <div class="modal-content w-100">
+            <div class="modal-body">
+                <div class="w-100">
+                    <h6 class="text-center pt-2">
+                        <p id="notificationModalMessage"></p>
+                        <button type="submit" id="notificationModalBtn" onclick="location.reload()" class="btn float-right btn-close-phone" data-bs-dismiss="modal">Fermer</button>
+                    </h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="modal fade" id="newUserModal" tabindex="-1" role="dialog"
      aria-labelledby="newUserModal" aria-hidden="true">
@@ -91,8 +110,16 @@ ob_start();
     </form>
 </div>
 
-
-<script rel="javascript" src="view/js/adminPanel.js"></script>
+<script>
+    // Creation of const that I need to have to display information for users
+    const notificationModal = new bootstrap.Modal(document.getElementById('notificationModal'), {
+        keyboard: false
+    });
+    const msgNotificationModal = document.getElementById("notificationModalMessage");
+    const btnNotificationModal = document.getElementById("notificationModalBtn");
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
 <?php
 
 $content = ob_get_clean();

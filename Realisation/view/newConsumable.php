@@ -50,12 +50,12 @@ ob_start();
             <div class="flex-column p-5 border-right border-dark w-50">
                 <div class="mb-3 w-100">
                     <label for="consumableName" class="form-label">Nom du consommable :</label>
-                    <input type="text" class="form-control" name="consumableName" id="consumableName" aria-describedby="consumableNameHelp" placeholder="TNP49-Y">
+                    <input type="text" class="form-control" name="consumableName" id="consumableName" aria-describedby="consumableNameHelp" placeholder="TNP49-Y" required>
                     <div id="consumableNameHelp" class="form-text">Entrez le nom du nouveau consommable.</div>
                 </div>
                 <div class="mb-3 w-100">
                     <label for="consumableQuantity" class="form-label">Quantité de base :</label>
-                    <input type="number" class="form-control" name="consumableQuantity" id="consumableQuantity" aria-describedby="consumableQuantityHelp" value="1" min="0" max="100">
+                    <input type="number" class="form-control" name="consumableQuantity" id="consumableQuantity" aria-describedby="consumableQuantityHelp" value="1" min="0" max="100" required>
                     <div id="consumableQuantityHelp" class="form-text">Indiquez la quantité de base du consommable.</div>
                 </div>
                 <div class="mb-3 w-100">
