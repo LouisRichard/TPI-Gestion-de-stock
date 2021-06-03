@@ -49,7 +49,7 @@ function changeUserStatus(idUser, reactivation = false){
     // Send object FormData
     XHR.send(FD);
 
-
+    // Prepare message of notification and display it
     if(!success && error){
         msgNotificationModal.innerHTML = "Une erreur inconnue est survenue ! Veuillez réessayer !";
         btnNotificationModal.classList.add("btn-danger");
@@ -76,6 +76,7 @@ function createNewUser(){
     var data = null;
     let success = false;
 
+    // Check if data is not empty and send it
     if(firstname.trim() !== ""){
         if(lastname.trim() !== ""){
             if(email.trim() !== ""){
@@ -114,6 +115,7 @@ function createNewUser(){
         }
     }
 
+    // Prepare message of notification and display it
     if(!success){
         msgNotificationModal.innerHTML = "Une erreur est survenue lors de la tentative d'ajout d'un nouvel utilisateur ! Un champ a été mal complété !";
         btnNotificationModal.classList.add("btn-danger");

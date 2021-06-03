@@ -10,6 +10,7 @@ require_once 'dbConnector.php';
 $id = $_POST['id'];
 $status = $_POST['status'];
 
+//Set status depends on the value of $status
 if($status == "reactivation"){
     $query = "UPDATE `users` SET `status`=1 WHERE users.IDUsers=".$id;
 

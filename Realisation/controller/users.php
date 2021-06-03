@@ -54,6 +54,7 @@ function logOut()
 }
 
 /**
+ * Function used to save modification about status of users in admin panel page
  * @param $post - contain all information that we need to save,
  * after that an admin modify status, on admin panel
  */

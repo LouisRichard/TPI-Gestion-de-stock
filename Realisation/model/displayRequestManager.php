@@ -95,7 +95,10 @@ function getProducts(){
     return executeQuery($query);
 }
 
-
+/**
+ * Get information of all users
+ * @return array
+ */
 function getUsersInformation(){
     $query = "SELECT `IDUsers`, `firstname`, `lastname`, `email`, `adminStatus`, `status` FROM `users`";
 

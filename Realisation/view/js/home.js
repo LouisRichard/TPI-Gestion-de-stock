@@ -5,9 +5,9 @@
  **/
 
 /**
- *
- * @param idConsumable
- * @param action
+ * This function is used to upgrade or downgrade the stock and avoid to go below 0 of stock
+ * @param idConsumable = id of the consumable
+ * @param action = to know if we need to go down or go up
  */
 function manageStock(idConsumable, action){
     let actualElement = document.getElementById(idConsumable).getElementsByTagName("span")[0];
@@ -30,7 +30,9 @@ function manageStock(idConsumable, action){
     score();
 }
 
-
+/**
+ * This function is used to set the score on the load of the page
+ */
 function scoreOnLoad(){
     // Find all rating items
     const ratings = document.querySelectorAll(".rating");
@@ -53,6 +55,9 @@ function scoreOnLoad(){
     });
 }
 
+/**
+ * This function is used to set the score of each consumable
+ */
 function score(){
     // Find all rating items
     const ratings = document.querySelectorAll(".rating");
@@ -83,6 +88,10 @@ function score(){
     });
 }
 
+/**
+ * This function's used to send form to php when we want to update stock of an consumable
+ * @param data = contain data that we need to update stock
+ */
 function sendData(data) {
     var XHR = new XMLHttpRequest();
     var FD  = new FormData();

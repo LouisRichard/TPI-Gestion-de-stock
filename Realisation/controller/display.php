@@ -67,30 +67,13 @@ function displayAdminPanel(){
 }
 
 /**
- * Function that display the new user page
- */
-function displayNewUser(){
-    if(isset($_SESSION['username']) && $_SESSION['username'] != ''){
-        if($_SESSION['status'] == 1){
-            $_SESSION['adminPanel'] = 'adminPanel';
-            require 'view/newUser.php';
-        }
-        else{
-            require 'view/home.php';
-        }
-    }
-    else{
-        require 'view/login.php';
-    }
-}
-
-/**
  * Function to display page to add new consumable
  */
 function displayNewConsumable(){
     if(isset($_SESSION['username']) && $_SESSION['username'] != ''){
         require_once 'model/displayRequestManager.php';
 
+        //Get information needed for the display of the page
         $consumableTypes = getConsumableTypes();
         $products = getProducts();
         $brands = getBrands();

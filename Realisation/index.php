@@ -50,16 +50,12 @@ if(isset($_GET['action'])){
             displayAdminPanel();
             break;
 
-        /**== Action to display page for creation of new user ==**/
-        case 'newUser':
-            displayNewUser();
-            break;
-
         /**== Action to save modification that an admin make on admin panel ==**/
         case 'saveAdminModification':
             saveAdminModification($_POST);
             break;
 
+        /**== Action to add new consumable ==**/
         case 'requestNewConsumable':
             newConsumable($_POST);
             break;

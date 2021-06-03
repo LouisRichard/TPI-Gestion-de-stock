@@ -17,7 +17,6 @@ if(!userAlreadyExist($_POST['email'])){
     addUser($lastname, $firstname, $email, $pwd, $admin);
 }
 
-
 /**
  * Function used to add new user into db
  * Status for all new user is on
