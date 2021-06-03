@@ -27,6 +27,10 @@ function login($userMail, $pwd){
             displayLogin();
         }
     }
+    else{
+        $_SESSION['msg'] = 'empty';
+        displayLogin();
+    }
 }
 
 /**

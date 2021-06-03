@@ -29,14 +29,14 @@
                         <div class="card shadow-lg border-0 rounded-lg mt-5">
                             <div class="card-header"><h3 class="text-center font-weight-light my-4">Connexion</h3></div>
                             <div class="card-body">
-                                <form method="post" action="/?action=requestLogin">
+                                <form method="post" action="?action=requestLogin">
                                     <div class="form-group">
                                         <label class="small mb-1" for="userMail">E-mail</label>
-                                        <input class="form-control py-4" id="userMail" name="userMail" type="email" placeholder="Entrer votre adresse e-mail" />
+                                        <input class="form-control py-4" id="userMail" name="userMail" type="email" required placeholder="Entrer votre adresse e-mail" />
                                     </div>
                                     <div class="form-group">
                                         <label class="small mb-1" for="pwd">Mot de passe</label>
-                                        <input class="form-control py-4" id="pwd" name="pwd" type="password" placeholder="Entrer votre mot de passe" />
+                                        <input class="form-control py-4" id="pwd" name="pwd" type="password" required placeholder="Entrer votre mot de passe" />
                                     </div>
                                     <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
                                         <button type="submit" class="btn btn-primary">Connexion</button>
@@ -46,6 +46,8 @@
                             <div class="card-footer text-center">
                                 <?php if(isset($_SESSION['msg']) && $_SESSION['msg'] == 'loginError') : ?>
                                     <label class="small text-danger">Identifiants incorrects ! Veuillez réessayer !</label>
+                                <?php unset($_SESSION['msg']); elseif(isset($_SESSION['msg']) && $_SESSION['msg'] == "empty") : ?>
+                                    <label class="small text-danger">Vous ne pouvez pas ne pas remplir les champs ! Veuillez réessayer !</label>
                                 <?php unset($_SESSION['msg']); endif; ?>
                             </div>
                         </div>
