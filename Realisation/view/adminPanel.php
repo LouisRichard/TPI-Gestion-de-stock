@@ -95,12 +95,12 @@ ob_start();
 </div>
 
 
-<div class="m-3 border border-dark pl-3 pr-3">
+<div class="m-3 pl-3 pr-3">
     <div class="w-100 m-2 p-2">
         <a data-bs-toggle="modal" data-bs-target="#newUserModal" class="btn btn-success float-right">Ajouter un nouvel utilisateur</a>
     </div>
 
-    <form action="?action=saveAdminModification" method="post" id="form">
+    <form action="?action=saveAdminModification" method="post" id="form" class="justify-content-center">
         <table class="table table-bordered table-striped table-hover mt-5">
             <thead>
                 <tr>
@@ -114,7 +114,7 @@ ob_start();
             <tbody>
                 <?php foreach($users as $user) : ?>
                     <tr class="text-center">
-                        <input type="hidden" hidden name="userID" id="userID" value="<?= $user['IDUsers']; ?>">
+                        <input type="hidden" hidden name="userID<?= $user['IDUsers']; ?>" id="userID<?= $user['IDUsers']; ?>" value="<?= $user['IDUsers']; ?>">
                         <td><?= $user['lastname']; ?></td>
                         <td><?= $user['firstname']; ?></td>
                         <td><?= $user['email']; ?></td>

@@ -10151,6 +10151,7 @@ body {
 .sb-topnav {
   padding-left: 0;
   height: 56px;
+  width: 100%;
   z-index: 1039;
 }
 .sb-topnav .navbar-brand {
