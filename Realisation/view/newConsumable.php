@@ -49,7 +49,7 @@ endif; ?>
     <form method="post" action="?action=requestNewConsumable">
         <h1 class="mt-3 text-center">Nouveau consommable</h1>
         <div class="mt-3 border-top border-dark d-flex flex-wrap w-100 justify-content-center">
-            <div class="mb-5 w-75 border-bottom border-dark">
+            <div class="mb-5 mt-5 w-75 border-bottom border-dark">
                 <label for="consumableName" class="form-label">Nom du consommable :</label>
                 <input type="text" class="form-control" name="consumableName" id="consumableName" aria-describedby="consumableNameHelp" placeholder="TNP49-Y" required>
                 <div id="consumableNameHelp" class="form-text">Entrez le nom du nouveau consommable.</div>
