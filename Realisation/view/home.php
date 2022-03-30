@@ -238,9 +238,18 @@ endif; ?>
                             <?php endif; ?>
                         </div>
                         <div class="w-50 p-2 flex-column">
-                            <?php foreach ($consumable['products'] as $product) : ?>
-                                <div class="text-left" name="consumableLinkedElement"><?= $product['productType'] . " " . $product['productBrands'] . " " . $product['productName'] ?></div>
-                            <?php endforeach; ?>
+                            <?php 
+                                $i=0; 
+                                foreach ($consumable['products'] as $product) {
+                                    if ($i < 2)
+                                        echo '<div class="text-left" name="consumableLinkedElement">' . $product['productType'] . ' ' . $product['productBrands'] . ' ' . $product['productName'] . '</div>';
+                                    else
+                                        echo '<div class="text-left" name="consumableLinkedElement'. $consumable['IDConsumables'] .'">' . $product['productType'] . ' ' . $product['productBrands'] . ' ' . $product['productName'] . '</div>';
+                                    $i++;
+                                }
+                                if ($i > 2)
+                                    echo '<p class="text-left" name="plus'. $consumable['IDConsumables'] .'" onclick="show()">plus</p>'
+                            ?>
                         </div>
                     </div>
                     </p>
@@ -252,56 +261,6 @@ endif; ?>
         <?php endforeach; ?>
     </div>
 </div>
-
-
-
-
-
-
-
-
-<?php /** ====== save =======
- * 
- * <div class="col mb-5 mt-0 mr-0 ml-0 p-0" >
-            </div>
-<div class="card-deck mb-3" id="lowQuantityConsumable" style="flex-wrap: wrap; justify-content: space-evenly">
-        <?php foreach ($dangerConsumables as $consumable) : ?>
-            <div class="card">
-                <div class="card-header text-center">
-                    <div class="d-flex flex-row" style="justify-content: center">
-                        <div class="align-self-center" type="button"><i class="fas fa-minus" onclick="manageStock('<?= $consumable['IDConsumables']; ?>', '-')"></i></div>
-                        <div class="align-self-center ml-4">
-                            <div class="rating" id="<?= $consumable['IDConsumables']; ?>"><?= $consumable['stock']; ?></div>
-                        </div>
-                        <div class="align-self-center ml-4" type="button"><i class="fas fa-plus" onclick="manageStock('<?= $consumable['IDConsumables']; ?>', '+')"></i></div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title" name="consumableBrand"><?= $consumable['brand'] . " " . $consumable['name']; ?></h5>
-                    <p class="card-text">
-                    <p class="p-2" name="consumableType">Type : <?= $consumable['type']; ?> </p>
-                    <div class="d-flex flex-wrap">
-                        <div class="w-50 p-2 flex-column">
-                            <p>Elément lié :</p>
-                        </div>
-                        <div class="w-50 p-2 flex-column">
-                            <?php foreach ($consumable['products'] as $product) : ?>
-                                <div class="text-left" name="consumableLinkedElement"><?= $product['productType'] . " " . $product['productBrands'] . " " . $product['productName'] ?></div>
-                            <?php endforeach; ?>
-                        </div>
-                    </div>
-                    </p>
-                    <div class="text-center">
-                        <btn class="btn btn-primary" onclick="sendData({id:'<?= $consumable['IDConsumables'] ?>',emailUser:'<?= $_SESSION['email'] ?>',stock:parseInt(document.getElementById(<?= $consumable['IDConsumables']; ?>).getElementsByTagName('span')[0].innerHTML,10)})">Sauvegarder</btn>
-                    </div>
-                </div>
-            </div>
-        <?php endforeach; ?>
-    </div>
-
-
- */ ?>
-
 
 <script>
     // Load score information
