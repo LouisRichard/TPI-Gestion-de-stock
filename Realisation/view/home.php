@@ -241,13 +241,13 @@ endif; ?>
                             <?php 
                                 $i=0; 
                                 foreach ($consumable['products'] as $product) {
-                                    if ($i < 2)
+                                    $i++;
+                                    if ($i < 3)
                                         echo '<div class="text-left" name="consumableLinkedElement">' . $product['productType'] . ' ' . $product['productBrands'] . ' ' . $product['productName'] . '</div>';
                                     else
-                                        echo '<div class="text-left" name="consumableLinkedElement'. $consumable['IDConsumables'] .'">' . $product['productType'] . ' ' . $product['productBrands'] . ' ' . $product['productName'] . '</div>';
-                                    $i++;
+                                        echo '<div class="text-left invisible" name="consumableLinkedElement'. $consumable['IDConsumables'] .'">' . $product['productType'] . ' ' . $product['productBrands'] . ' ' . $product['productName'] . '</div>';
                                 }
-                                if ($i > 2)
+                                if ($i > 3)
                                     echo '<p class="text-left" name="plus'. $consumable['IDConsumables'] .'" onclick="show()">plus</p>'
                             ?>
                         </div>
