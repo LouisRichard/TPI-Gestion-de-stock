@@ -238,17 +238,17 @@ endif; ?>
                             <?php endif; ?>
                         </div>
                         <div class="w-50 p-2 flex-column">
-                            <?php 
-                                $i=0; 
-                                foreach ($consumable['products'] as $product) {
-                                    $i++;
-                                    if ($i < 3)
-                                        echo '<div class="text-left" name="consumableLinkedElement">' . $product['productType'] . ' ' . $product['productBrands'] . ' ' . $product['productName'] . '</div>';
-                                    else
-                                        echo '<div class="text-left invisible" name="consumableLinkedElement'. $consumable['IDConsumables'] .'">' . $product['productType'] . ' ' . $product['productBrands'] . ' ' . $product['productName'] . '</div>';
-                                }
-                                if ($i > 3)
-                                    echo '<p class="text-left" name="plus'. $consumable['IDConsumables'] .'" onclick="show()">plus</p>'
+                            <?php
+                            $i = 0;
+                            foreach ($consumable['products'] as $product) {
+                                $i++;
+                                if ($i < 4)
+                                    echo '<div class="text-left" name="consumableLinkedElement">' . $product['productType'] . ' ' . $product['productBrands'] . ' ' . $product['productName'] . '</div>';
+                                else
+                                    echo '<div class="text-left" name="consumableLinkedElement' . $consumable['IDConsumables'] . '" hidden>' . $product['productType'] . ' ' . $product['productBrands'] . ' ' . $product['productName'] . '</div>';
+                            }
+                            if ($i > 3)
+                                echo '<a href="#" class="text-left" name="plus' . $consumable['IDConsumables'] . '" onclick="showMore(\'consumableLinkedElement' . $consumable['IDConsumables'] . '\'); return false">plus</a>'
                             ?>
                         </div>
                     </div>
@@ -272,6 +272,21 @@ endif; ?>
     });
     const msgModificationStock = document.getElementById("modificationStockMessage");
     const btnModificationStock = document.getElementById("modificationStockBtn");
+</script>
+<script>
+    function showMore(name)
+    {
+        let elements = document.getElementsByName(name);
+        let i = 0;
+
+        for (i = 0; i < elements.length; i++)
+        {
+            if (elements[i].hidden == 1)
+                elements[i].hidden = 0;
+            else
+                elements[i].hidden = 1;
+        }
+    }
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
