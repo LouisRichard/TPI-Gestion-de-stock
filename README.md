@@ -17,11 +17,11 @@ Pour finir cette petite update, je souhaite préciser que je travail sur ce site
 ## English part
 
 ### Base description of the project
-This repository contain all the file of my TPI. The TPI is an final exam for the formation of IT Specialist (CFC) in Switzerland. This work has for goal to create a web platform that allow users to manage a enterprise stock. This web platform has been focused on an user friendly aspect. My first goal has to allow users to manage some cunsumables present in an enterprise stock, like ink for printers, papers, ...
-For that I inspire me with my precedent professional experience in the HEIG-VD.
+This repository contain all the file of my TPI. The TPI is the final exam for the formation of IT Specialist (CFC) in Switzerland. This work has for goal to create a web platform allowing malleable inventory management of consummable (like printer ink, for example) with a much more user-oriented interface.
+For this I refer to my professional experience that I was able to achieve at HEIG-VD.
 
 
 ### Update 30.03.2022
-After few month without modification of this repo, I come back on this project to try my besto to make of this project a functionnal one. In a first time, I will fix all the bugs that I find. After that I will add some new basics functionnality. After fix all the bugs and add fundamentals functionnality I will try to change the way that I code and find a way to optimise the site (I will for example go for php oriented object).
+After few month without modification, I came back to this project to try my best to make this project a functionnal one. First, I will fix all the bugs that I'm able to find. After that I will add some new basics functionnality. After that, I will try to change the way that I code and find a way to optimise the site (Like Object Oriented PHP).
 
-To end this little update, I wish to say that I work on this project during my free time, so it may take a few time to achieve all the things that I want to do.
+I work on this project during my free time, so it may take some time to achieve all the things that I want to do.
